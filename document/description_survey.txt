@@ -1,0 +1,86 @@
+Planning Our Application
+
+What's it name? 
+It can call is : Coderschool Entrance Test !
+
+What are we building? 
+	- We are building a test online application by Ruby on Rails 5. 
+	Do you know about CoderSchool? If not, visit coderschool.vn to see more.
+	As you know, Coderschool create many free courses annual for community. 
+	So, very thankful and grateful about that. 
+	We team was so lucky to become member in first class of CoderSchool in Ha Noi. 
+	We want build something meaningful to Coderschool for many their dedications.
+	Idea is very simple, we want each candidate who enroll class,  have to an entrance test before going next. 
+	They will create a test in skill they want to learn and do that. Only cadidate who pass 
+	this exam will get permission to go next round - Like create a prework project
+	We want coderschool can control candidate level to ensure about quality of course and have plan for lecturing.
+	This application spend for Coderschool. I assumpt that  coderschool will use it =)) 
+	
+	
+Who are we building it for ? 
+	- We building it simply as simple application for last project in class. 
+	We build it to 	manipulate value knowledge we learnt from class. 
+	And another desire, we want to build something useful to CoderSchool instead of our thank. 
+	
+Why is it awesome?
+	You know, if teacher know about benchmark level of students in class first, they will have nesscessary adjustments. 
+	In other hand, system hope can help everyone can supplement knowledge
+	It will make them more confidence and valuable
+	
+User stories: 
+	As a user, 
+		[Authentication]
+			- User can be signin, signup to application - After signup user will recieve an welcome email
+				(May be include society signin like facebook, twitter, ...)
+		[Personalities]
+			-User see profile, detail information about themself. such as: Exclude some of detail field of user, 
+			user should see about how many tests did they do? how many question do you contribute?
+			-User see all activity that they did in the system on the past
+			-User can see number of follwing and followers, and see list.
+			- Edit personal information
+			-Change password
+			- Signout
+		[Test]
+			-User can see all of the tests category. 
+			-User can choose a category to create test. When user click to button create test => test automaticaly created with random question in questions bank
+			-User can do specify test. Have a clock downtime, you only do the test on time allowance. The test have 4 states: 'prepare' , 'doing', 'pending check', 'done'
+				Before you click the 'go test' button => state change to 'doing'. 
+				If you are doing the test and you are disturbed, you can save the test and clock will temporarily stop => button change 'go back'
+				After that, if you are free, you can go back and click button 'go back' to continute do the test. And clock continuely count down from time saved before
+				After completed the test, you will click button finish to finish test. => State change 'pending check'. 
+				After admin check user test, state change => 'done' and show score of the test. 
+			
+			-After the test checked, system will actomatically caculate and show result for you. 
+				We can check which one is true, which one is false. And suggestion for difficult questions
+				At this page, 
+					you can see your's rank in amount of users who took part in this test, where are you standing? 
+					you can see your's score, number of questions are true, number of questions are false.
+					=> You can realize your's knowledge and add some lack one 
+		
+			-You can review and comment for test category
+			-You can share your'result to social network
+		-User can find by people and follow them. 
+			You can see the personal detail page of whom you followed or you are followed.
+		[Contribution]
+			-User can create the suggest question for system. 
+			-Add question and answer. Each question user can add suggestion for this question. 
+				It will show in the result page. 
+			-You can see all question you contributed.
+			-Question created will pending to admin accept or not. If accept, it may be appear in the test, if not is the opposite
+		.......
+	As a test, 
+		-Must belongs to a category.
+		-some information detail such as: number of question, time, and exam count.
+		-Can list some climinent people (best score) and list all people tested and their score, addtional their's rank
+		.......
+	As a system,
+		-Send email welcome after resgiter
+		- Automatically send email to user after admin check for their test. 
+		- Send email if after 8 hour created the test, user hasn't done yet. or after 8 hour save, user havent gone back yet
+	As a admin, 
+		Manage all the system
+		.......
+		
+		
+Modeling data: 
+	-

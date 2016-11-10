@@ -1,0 +1,37 @@
+GIT WORK FLOW
+Always have many ways to collabrate with team members. But each team will 
+have private rule to follow. it aim to make more easy while we work together
+
+I suggest a work flow i known before. I think its quite good. 
+
+1: Folk project from team project
+2: clone from the personal (repo just folked)
+3: add remote to repo of team.(I thinks it is CoderSchool)
+4: Every final source code, will will put it in the develop branch. So 
+we will create the develop branch. I will innitialize project and put code to develop branch in the 
+team repo. After you guys create branch develop and switched to it,  we will pull all code from team repo develop branh
+	+ git checkout -b develop
+	+ git pull (team-remote) develop
+5: Each task we will do in the seperate branch. so create each branch for each task
+	git checkout -b new_branch
+6: After changed, add/commit code to remote team repo
+7: 
+	Because we will do task parallel , so before you push code change to github team repo
+	Please switch to develop branch , pull all code from develop to sure that everything is up to date
+	Then, re switch to working branch, and rebase code from develop branch. 
+	If confict -> fix confict and rebase continue-> after that. push code to team repo
+	
+	git checkout develop
+	git pull (team_remote) develop
+	git checkout working_branch
+	Optional 1: git rebase develop
+			+ If confict->fix confict -> git add . -> git rebase --continue
+	Optional 2: git merge develop
+			+ If confict -> fix confict -> git add . -> git merge develop
+	git push (remote_team) working_branch
+8: Create pull request => Post to group to everyone review code. If ok, owner will merge this branch
+9: Next task with next branch
+
+Notice: One pull request should one commit. To do this, after first commit , if code change -> you add, commit again. 
+	Please  " Using git commit --amend --no-edit "
+

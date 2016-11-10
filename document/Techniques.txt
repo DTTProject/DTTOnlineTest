@@ -1,0 +1,22 @@
+Techniques needed list
+
+  - All basic rails technique such as : template, routes, controller, form, model association, validation ...
+  - Divise gem (for login, logout)
+  - Omniauth gem (for login with social network)
+  - Ajax rails and jquery ajax
+  - All logic handle in model(scope, function ..) , not query in controller.
+
+  - Some callback needed such as: before_action in controller, before_create, before_update .. in model (support for create activity)
+  - I18n - We should use i18n because it's for multi language
+
+  - Eager loading. ....
+
+  - Permisstion distribution: Cancancan gem
+  - Kaminari gem for pagination
+  - FriendId URL
+  - Share button social
+  - Background job, cron job: sidekiq => for send result to user
+  - Websocket for push notification
+  - Send email : sendgrid, ..
+
+
