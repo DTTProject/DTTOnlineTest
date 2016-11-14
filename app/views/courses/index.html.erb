@@ -1,0 +1,20 @@
+<section class="container">
+<p id="notice"><%= notice %></p>
+
+<h1>Courses</h1>
+
+<div class="container-fluid">
+    <% @courses.in_groups_of(3) do |g| %>
+      <div class="row">
+        <% g.compact.each do |e| %>
+            <%= render e %>
+        <% end %>
+      </div>  
+    <% end %>
+  </div>
+</div>
+
+<br>
+
+<%= link_to 'New Course', new_course_path %>
+</section>
