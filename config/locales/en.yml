@@ -1,23 +1,45 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  layout:
+    carousels:
+      carousel1:
+        title: "Coderschool Classes"
+        content: "We set up four free classes annual for community : Android, IOS
+                  NodeJs, Ruby On Rails"
+        button: "Join Us Now"
+      carousel2:
+        title: "Our Team"
+        content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dignissimos beatae nemo quos perspiciatis, doloribus placeat voluptate exercitationem eaque ut, quis sapiente hic, debitis nostrum quidem assumenda amet sequi minus."
+        button:
+          signup: "SignUp"
+          signin: "SignIn"
+      carousel3:
+        title: "Our Community"
+        content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dignissimos beatae nemo quos perspiciatis, doloribus placeat voluptate exercitationem eaque ut, quis sapiente hic, debitis nostrum quidem assumenda amet sequi minus."
+        button: "Go To Test"
+    footer:
+      about-us: "About Us"
+      about-coderschool: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit nihil, excepturi debitis repellendus sapiente assumenda nesciunt! Odit iure modi delectus rem pariatur sit eos voluptatum eius, cumque libero saepe perferendis?"
+      find_our_more: "Find Our More"
+      links:
+        link1: "Coderschool Website"
+        link2: "Facebook Fanpage"
+        link3: "Twitter"
+        link4: "Gmail"
+    navbar:
+      brand: "Coderschool Entrance Test"
+      home: "Home"
+      login: "LogIn"
+      signup: "SignUp"
+      courses: "Courses"
+      feedback: "Feedback"
+  page:
+    home:
+      title: "Coderschool Entrance Test"
+      courses:
+        title: "Our Courses"
+        ruby: "Ruby On Rails"
+        nodejs: "Node Js"
+        ios: "IOS"
+        android: "Android"
+        button: "Detail"
+        short_des: "Some quick example text to build on the card title and make up the bulk of the card's content."
