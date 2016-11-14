@@ -1,0 +1,96 @@
+<div class="container">
+  <div class="row" id="coursesSection">
+    <hr class="horizontal" />
+    <div class="col-md-12">
+      <p class="flex-center courses-title"><%= t "page.home.courses.title" %></p>
+    </div>
+  </div>
+  <div class="row">
+    <!--First columnn-->
+    <div class="col-md-4">
+      <!--Card-->
+      <div class="card">
+
+        <!--Card image-->
+        <div class="view overlay hm-white-slight">
+          <%= image_tag "ruby.png", alt: "", class: "img-fluid" %>
+          <a href="#">
+            <div class="mask"></div>
+          </a>
+        </div>
+        <!--/.Card image-->
+
+        <!--Card content-->
+        <div class="card-block">
+          <!--Title-->
+          <h4 class="card-title"><%= t "page.home.courses.ruby" %></h4>
+          <!--Text-->
+          <p class="card-text"><%= t "page.home.courses.short_des" %></p>
+          <a href="#" class="btn btn-primary"><%= t "page.home.courses.button" %></a>
+        </div>
+        <!--/.Card content-->
+
+      </div>
+      <!--/.Card-->
+    </div>
+    <!--First columnn-->
+
+    <!--Second columnn-->
+    <div class="col-md-4">
+      <!--Card-->
+      <div class="card">
+        <!--Card image-->
+        <div class="view overlay hm-white-slight">
+          <%= image_tag "nodejs.png", alt: "", class: "img-fluid" %>
+          <a href="#">
+            <div class="mask"></div>
+          </a>
+        </div>
+        <!--/.Card image-->
+
+        <!--Card content-->
+        <div class="card-block">
+          <!--Title-->
+          <h4 class="card-title"><%= t "page.home.courses.nodejs" %></h4>
+          <!--Text-->
+          <p class="card-text"><%= t "page.home.courses.short_des" %></p>
+          <a href="#" class="btn btn-primary"><%= t "page.home.courses.button" %></a>
+        </div>
+        <!--/.Card content-->
+
+      </div>
+      <!--/.Card-->
+    </div>
+    <!--Second columnn-->
+
+    <!--Third columnn-->
+    <div class="col-md-4">
+      <!--Card-->
+      <div class="card">
+
+        <!--Card image-->
+        <div class="view overlay hm-white-slight">
+          <%= image_tag "ios.png", alt: "", class: "img-fluid" %>
+          <a href="#">
+            <div class="mask"></div>
+          </a>
+        </div>
+        <!--/.Card image-->
+
+        <!--Card content-->
+        <div class="card-block">
+          <!--Title-->
+          <h4 class="card-title"><%= t "page.home.courses.ios" %></h4>
+          <!--Text-->
+          <p class="card-text"><%= t "page.home.courses.short_des" %></p>
+          <a href="#" class="btn btn-primary"><%= t "page.home.courses.button" %></a>
+        </div>
+        <!--/.Card content-->
+
+      </div>
+      <!--/.Card-->
+    </div>
+    <!--Third columnn-->
+  </div>
+  <%= render "partials/contact" %>
+</div>

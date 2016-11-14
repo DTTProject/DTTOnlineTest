@@ -1,0 +1,111 @@
+html,
+body {
+    height: 100%;
+}
+
+.navbar {
+    background-color: transparent;
+}
+
+.top-nav-collapse {
+    background-color: #4285F4;
+    opacity: .6;
+    padding: 1rem;
+}
+
+footer.page-footer {
+    background-color: #4285F4;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar {
+        background-color: #4285F4;
+    }
+}
+
+.carousel {
+    height: 50%;
+}
+
+@media (max-width: 776px) {
+    .carousel {
+        height: 100%;
+    }
+}
+
+#carousel-example-1 {
+    height: 100% !important;
+}
+
+.carousel-item,
+.active {
+    height: 100%;
+    p {
+        width: 40%;
+        transform: translateX(80%)
+    }
+}
+
+.carousel-inner {
+    height: 100%;
+}
+
+.carousel-item:nth-child(1) {
+    background-image: url(carousel1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.carousel-item:nth-child(2) {
+    background-image: url(carousel2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.carousel-item:nth-child(3) {
+    background-image: url(carousel3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.flex-center {
+    color: #fff;
+}
+
+.test_nav {
+    padding: 1.5rem;
+    .nav-item {
+        &:after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: width .3s;
+        }
+        &:hover:after {
+            width: 100%;
+        }
+
+    }
+}
+
+.horizontal {
+    width: 15rem;
+    height: 2px;
+    background: #4B515D;
+}
+
+.courses-title {
+    font-size: 30px;
+    color: #2E2E2E;
+}
+
+.carousel-button {
+    &:hover {
+        cursor: pointer;
+    }
+}
