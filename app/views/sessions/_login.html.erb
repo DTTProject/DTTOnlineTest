@@ -1,0 +1,50 @@
+<!-- Modal Login -->
+<div class="modal fade modal-ext" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <!--Content-->
+        <div class="modal-content">
+           
+            <!--Header-->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3><i class="fa fa-user"></i> Login</h3>
+                <a href="/auth/facebook" class="btn-floating btn-fb btn-small"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="btn-floating btn-tw btn-small"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="btn-floating btn-gplus btn-small"><i class="fa fa-google-plus"></i></a>
+                <a href="#" class="btn-floating btn-li btn-small"><i class="fa fa-linkedin"></i></a>
+                <a href="#" class="btn-floating btn-git btn-small"><i class="fa fa-github"></i></a>
+            </div>
+            
+            <!--Body-->
+            <div class="modal-body">
+                <%= form_tag submit_login_path do %>
+                  <div class="md-form">
+                      <i class="fa fa-envelope prefix"></i>
+                      <%= text_field_tag :email, params[:email], placeholder: 'Email', class: 'form-control' %>
+                  </div>
+
+                  <div class="md-form">
+                    <i class="fa fa-lock prefix"></i>
+                    <%= password_field_tag :password, nil, placeholder: 'Password', class: 'form-control' %>
+                  </div>
+
+                  <div class="text-xs-center">
+                    <%= submit_tag 'Log In', class: 'btn btn-primary btn-lg' %>
+                  </div>
+                <% end %>
+            </div>
+            
+            <!--Footer-->
+            <div class="modal-footer">
+                <div class="options">
+                    <p>Not a member? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal-register">Sign Up</a></p>
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+

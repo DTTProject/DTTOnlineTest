@@ -30,6 +30,7 @@ en:
       home: "Home"
       login: "LogIn"
       signup: "SignUp"
+      logout: "LogOut"
       courses: "Courses"
       feedback: "Feedback"
   page:
