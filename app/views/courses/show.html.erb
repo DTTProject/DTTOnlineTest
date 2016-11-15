@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @course.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @course.description %>
+</p>
+
+<p>
+  <strong>Question numbers:</strong>
+  <%= @course.question_numbers %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @course.duration %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <% if @course.image? %>
+    <%= image_tag @course.image.thumb.url %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_course_path(@course), class: "btn btn-warning" %> |
+<%= link_to 'Back', courses_path, class: "btn btn-primary" %> |
+<%= link_to 'Delete', @course, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>

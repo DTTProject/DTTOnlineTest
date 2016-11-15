@@ -1,0 +1,45 @@
+<%= form_for @course, html: { multipart: true, class: "container" } do |f| %>
+  <% if @course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% @course.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.label :name, class: "float-label" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description, class: "float-label" %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :question_numbers, class: "float-label" %>
+    <%= f.number_field :question_numbers, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :duration, class: "float-label" %>
+    <%= f.number_field :duration, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image, class: "float-label" %>
+    <%= f.file_field :image, class: "form-control" %>
+    <% if f.object.image? %>
+      <%= image_tag f.object.image.thumb.url %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>
