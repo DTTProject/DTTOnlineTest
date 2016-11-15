@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DTTOnlineTest</title>
+    <title><%= t "page.home.title" %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,24 @@
   </head>
 
   <body>
+    <!-- Message toast -->
+    <%= render "shared/message"%>
+    <!--Navbar-->
+    <%= render "partials/navbar" %>
+    <!--/.Navbar-->
+
+    <!--Carousel Wrapper-->
+    <%= render "partials/carousel" %>
+    <!--/.Carousel Wrapper-->
+
+    <br>
+    <!--Content-->
     <%= yield %>
+    <!--/.Content-->
+
+
+
+    <!--Footer-->
+    <%= render "partials/footer" %>
   </body>
 </html>

@@ -57,18 +57,15 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
-    coffee-rails (4.2.1)
-      coffee-script (>= 2.2.0)
-      railties (>= 4.0.0, < 5.2.x)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.14)
+    font-awesome-rails (4.7.0.0)
+      railties (>= 3.2, < 5.1)
+    font-kit-rails (1.2.0)
+      rails
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -173,11 +170,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap (~> 4.0.0.alpha4)
-  bootstrap-material-design
+  bootstrap (~> 4.0.0.alpha5)
+  bootstrap-material-design (~> 0.2.2)
   byebug
   carrierwave (~> 0.10.0)
-  coffee-rails (~> 4.2)
+  font-awesome-rails
+  font-kit-rails (~> 1.2.0)
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
