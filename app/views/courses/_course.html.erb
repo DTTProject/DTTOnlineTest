@@ -1,19 +1,23 @@
-<div class="col-md-4">
-  <%= link_to course_path(course) do %>
-    <div class="card">
-      <img class="card-img-top" src="<%= course.image.thumb.url %>">
-      <div class="card-block">
-        <h4 class="card-title"><%= course.name %></h4>
-        <p>
-          <span style="font-weight: bold">Number of question: </span>
-          <span><%= course.question_numbers %></span>
-        </p>
-        <p>
-          <span style="font-weight: bold">Duration: </span>
-          <span><%= course.duration %></span>
-        </p>
-        <p class="card-text"><%= course.description %></p>
-      </div>
+<div class="col-md-6 course-block">
+  
+  <div class="card">
+    <img class="card-img-top" src="<%= course.image.thumb.url %>">
+    <div class="card-block">
+      <%= link_to course_path(course) do %>
+      <h4 class="card-title"><%= course.name %></h4>
+      <% end %>
+      <p>
+        <span style="font-weight: bold">Number of question: </span>
+        <span><%= course.question_numbers %></span>
+      </p>
+      <p>
+        <span style="font-weight: bold">Duration: </span>
+        <span><%= course.duration %></span>
+      </p>
+      <p class="card-text"><%= course.description %></p>
     </div>
-  <% end %>
+    <%= link_to 'Edit', edit_course_path(course), class: "btn btn-warning" %> |
+    <%= link_to 'Delete', course, method: :delete, class: "btn btn-danger course-delete-button" %>
+  </div>
+  
 </div>  

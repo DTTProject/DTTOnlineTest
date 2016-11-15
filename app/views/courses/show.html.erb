@@ -22,7 +22,9 @@
 
 <p>
   <strong>Image:</strong>
-  <%= image_tag @course.image.thumb.url %>
+  <% if @course.image? %>
+    <%= image_tag @course.image.thumb.url %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_course_path(@course), class: "btn btn-warning" %> |
