@@ -14,9 +14,7 @@ $(document).on('turbolinks:load', function(){
       scrollTop: $('#' + targetId).offset().top
     }, 1000);
   });
-
-
-})
+});
 
 function scrollNavHandle()
 {
