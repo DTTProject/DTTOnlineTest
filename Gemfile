@@ -14,7 +14,6 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 # gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'bootstrap-material-design', '~> 0.2.2'
 gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'font-awesome-rails'
 gem 'font-kit-rails', '~> 1.2.0'
@@ -54,3 +53,5 @@ gem 'mini_magick', '~> 4.3'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
+
+gem 'materialize-sass'

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= t "page.home.title" %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body class="fixed-sn purple-skin">
+    <!--Double navigation-->
+    <%= render "admin/partials/header" %>
+    <!--/Double navigation-->
+
+    <!--Main layout-->
+    <main class="admin_content">
+      <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-10 offset-md-2">
+          <div class="header_title">
+            <h3><%= yield :admin_header_title %></h3>
+          </div>
+          <hr/>
+          <div class="content_detail">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+      </div>
+    </main>
+    <!--/Main layout-->
+    <%= render "admin/partials/footer" %>
+  </body>
+</html>
+
