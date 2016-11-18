@@ -1,15 +1,13 @@
 class Admin::CoursesController < ApplicationController
   layout "admin"
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :set_course, except: :index
 
   # GET /courses
-  # GET /courses.json
   def index
     @courses = Course.all
   end
 
   # GET /courses/1
-  # GET /courses/1.json
   def show
   end
 
@@ -23,52 +21,35 @@ class Admin::CoursesController < ApplicationController
   end
 
   # POST /courses
-  # POST /courses.json
   def create
     @course = Course.new(course_params)
-
-    respond_to do |format|
-      if @course.save
-        format.html { redirect_to admin_courses_path, notice: 'Course was successfully created.' }
-        format.json { render :show, status: :created, location: @course }
-      else
-        format.html { render :new }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
-      end
+    if @course.save
+      redirect_to admin_courses_path, notice: t("courses.successfully_created")
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /courses/1
-  # PATCH/PUT /courses/1.json
   def update
-    respond_to do |format|
-      if @course.update(course_params)
-        format.html { redirect_to admin_courses_path, notice: 'Course was successfully updated.' }
-        format.json { render :show, status: :ok, location: @course }
-      else
-        format.html { render :edit }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
-      end
+    if @course.update(course_params)
+      redirect_to admin_courses_path, notice: t("courses.successfully_updated")
+    else
+      render :edit
     end
   end
 
   # DELETE /courses/1
-  # DELETE /courses/1.json
   def destroy
     @course.destroy
-    respond_to do |format|
-      format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to courses_url, notice: t("courses.successfully_destroyed")
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_course
-      @course = Course.find(params[:id])
+      @course = Course.find_by_id(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
       params.require(:course).permit(:name, :description, :question_numbers, :duration, :image)
     end

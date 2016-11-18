@@ -37,7 +37,7 @@
             <!--Body-->
             <div class="modal-body">
               <% @course = Course.new %>            
-              <%= form_for @course, html: { multipart: true } do |f| %>
+              <%= form_for [:admin, @course], html: { multipart: true } do |f| %>
                 <% if @course.errors.any? %>
                   <div id="error_explanation">
                     <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
