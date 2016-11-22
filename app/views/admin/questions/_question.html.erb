@@ -1,0 +1,45 @@
+<tr>
+  <td>
+    <fieldset class="form-group">
+      <input type="checkbox" id="checkbox1">
+      <label for="checkbox1"></label>
+    </fieldset>
+  </td>
+  <th scope="row"><%= index + 1 %></th>
+  <td><%= question.content %></td>
+  <td><%= question.course.name %></td>
+  <td><%= question.complexity %></td>
+  <td>
+    <%= link_to edit_admin_question_path(question), class: "teal-text" do %>
+      <i class="fa fa-pencil"></i>
+    <% end %>
+    <a class="red-text question_<%= question.id %>" data-toggle="modal" data-target="#model_delete_question" id="<%= question.id %>"><i class="fa fa-times"></i></a>
+  </td>
+</tr>
+
+<!-- Modal -->
+<div class="modal fade" id="model_delete_question" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel"><%= t "page.admin.questions.delete.title" %></h4>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+                <%= t "page.admin.questions.delete.confirm" %>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary confirmed_delete_question">Yes</button>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+<!-- /.Live preview-->

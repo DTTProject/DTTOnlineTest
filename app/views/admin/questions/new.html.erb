@@ -1,0 +1,45 @@
+<%= content_for :admin_header_title do %>
+  <%= t "page.admin.questions.new.title" %>
+<% end %>
+
+<%= form_for [:admin, @question]  do |f| %>
+<%= render "shared/model_object_error", object: f.object %>
+<div class="new_question">
+  <div class="row">
+    <div class="col-md-7">
+      <!--Panel-->
+      <div class="card">
+        <h5 class="card-header primary-color white-text">
+          <%= t "page.admin.questions.new.question_information.title" %>
+        </h5>
+        <div class="card-block">
+          <%= render "form", f: f, question: @question %>
+        </div>
+      </div>
+      <!--/.Panel-->
+    </div>
+    <div class="col-md-5">
+      <div class="card">
+        <h5 class="card-header primary-color white-text">
+          <%= t "page.admin.answers.title" %>
+        </h5>
+        <div class="card-block">
+          <%= f.fields_for :answers do |answer| %>
+            <%= render 'answer_fields', f: answer %>
+          <% end %>
+        </div>
+        <div class="card-footer">
+          <br/>
+          <%= link_to_add_fields t("page.admin.questions.add_answer"),
+        f, :answers %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <%= f.submit "Submit" , class: "btn btn-success submit_category waves-effect btn blue"%>
+    </div>
+  </div>
+</div>
+<% end %>

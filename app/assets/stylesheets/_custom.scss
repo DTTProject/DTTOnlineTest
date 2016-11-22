@@ -109,3 +109,27 @@ footer.page-footer {
         cursor: pointer;
     }
 }
+
+.color_wrap {
+    background: #3f729b !important;
+}
+
+.md-form {
+    label.active {
+        transform: translateY(-10%) !important;
+    }
+}
+
+.suggestion_area {
+    transition: all 1s ease-in-out;
+}
+
+.new_question {
+    .card {
+        padding-bottom: 2rem;
+    }
+}
+
+.toast-top-right {
+    top: 6rem !important;
+}

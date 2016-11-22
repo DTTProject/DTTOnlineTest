@@ -1,0 +1,31 @@
+<%= content_for :admin_header_title do %>
+  <%= t "page.admin.questions.index.title" %>
+<% end %>
+<div class="add_question">
+  <a class="btn-floating btn-large red" data-toggle="tooltip" data-placement="top" title="Add New Question" href="<%= new_admin_question_path %>">
+    <i class="fa fa-plus" aria-hidden="true"></i>
+  </a>
+</div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th></th>
+            <th><%= t "page.admin.questions.tables.stt" %></th>
+            <th><%= t "page.admin.questions.tables.content" %></th>
+            <th><%= t "page.admin.questions.tables.course" %></th>
+            <th><%= t "page.admin.questions.tables.complexity" %></th>
+            <th><%= t "page.admin.questions.tables.action" %></th>
+        </tr>
+    </thead>
+    <tbody>
+      <% if @questions.size > 0 %>
+        <% @questions.each_with_index do |question, index| %>
+          <%= render 'question', index: index, question: question %>
+        <% end %>
+      <% else %>
+        <tr>
+          <%= No data %>
+        </tr>
+      <% end %>
+    </tbody>
+</table>

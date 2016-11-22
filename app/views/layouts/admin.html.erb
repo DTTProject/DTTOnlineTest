@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= t "page.home.title" %></title>
-    <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <body class="fixed-sn purple-skin">
+  <%= render "partials/head" %>
+  <body class="fixed-sn mdb-skin admin_panel">
+    <%= render "shared/message"%>
+    <!-- Message toast -->
     <!--Double navigation-->
     <%= render "admin/partials/header" %>
     <!--/Double navigation-->
@@ -30,6 +26,7 @@
     </main>
     <!--/Main layout-->
     <%= render "admin/partials/footer" %>
+    <script src="//cdn.quilljs.com/1.1.5/quill.min.js"></script>
   </body>
 </html>
 

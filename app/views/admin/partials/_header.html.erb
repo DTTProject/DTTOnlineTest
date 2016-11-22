@@ -37,6 +37,20 @@
         </li>
       </ul>
     </li>
+    <li>
+      <ul class="collapsible collapsible-accordion">
+        <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-chevron-right"></i><%= t "layout.admin.sidebar.questions.title" %><i class="fa fa-angle-down rotate-icon"></i></a>
+          <div class="collapsible-body">
+            <ul>
+              <li><a href="<%= admin_questions_path %>" class="waves-effect"><i class="fa fa-book" aria-hidden="true"></i><%= t "layout.admin.sidebar.questions.action.list" %></a>
+              </li>
+              <li><a href="<%= new_admin_question_path %>" class="waves-effect"><i class="fa fa-plus-square" aria-hidden="true"></i><%= t "layout.admin.sidebar.questions.action.add" %></a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </li>
     <!--/. Side navigation links -->
 
   </ul>

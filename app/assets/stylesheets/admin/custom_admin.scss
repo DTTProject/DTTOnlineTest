@@ -1,7 +1,8 @@
 // Logo DTT
-body {
+body.admin_panel {
   height: auto !important;
 }
+
 .logo_dtt_admin {
   color: #fff;
   font-size: 50px !important;
@@ -24,5 +25,12 @@ footer.admin_footer {
   height: 20px;
   p {
     color: #000;
+  }
+}
+
+.dropdown-content {
+  overflow: visible !important;
+  li {
+    background-color: #fff;
   }
 }

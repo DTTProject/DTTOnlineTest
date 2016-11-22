@@ -16,5 +16,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require materialize-sprockets
-//= require mdb
 //= require_tree .
+//= require toastr

@@ -55,3 +55,9 @@ source 'https://rails-assets.org' do
 end
 
 gem 'materialize-sass'
+gem 'config'
+gem 'faker'
+gem 'config'
+# Toast messages
+gem 'toastr-rails'
+gem 'kaminari'

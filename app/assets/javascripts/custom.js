@@ -1,4 +1,8 @@
+
 $(document).on('turbolinks:load', function(){
+  //Select materialize initial
+    $('.mdb-select').material_select();
+  //Create animation
   $('.carousel-button').hover(function(){
     $(this).addClass('animated');
     $(this).addClass('bounce');
@@ -7,6 +11,7 @@ $(document).on('turbolinks:load', function(){
     $(this).removeClass('infinite');
   });
 
+  //Scroll page
   $('.nav-head .nav-item a').on('click',function(e){
     e.preventDefault();
     var targetId = e.currentTarget.id + 'Section';
@@ -14,8 +19,20 @@ $(document).on('turbolinks:load', function(){
       scrollTop: $('#' + targetId).offset().top
     }, 1000);
   });
+
+
+  //Switch suggestion
+  $('.switch_suggestion').on('click', function(){
+    $('.suggestion_area').toggleClass('hidden-xs-up');
+  })
+
+  // Tooltips Initialization
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
 });
 
+//Function handle scroll
 function scrollNavHandle()
 {
   var carouselHeight =  document.getElementById('carousel-example-1').offsetHeight;

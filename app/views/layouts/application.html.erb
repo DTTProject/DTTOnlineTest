@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= t "page.home.title" %></title>
-    <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
+  <%= render "partials/head" %>
   <body>
     <!-- Message toast -->
     <%= render "shared/message"%>

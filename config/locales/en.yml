@@ -1,5 +1,12 @@
 en:
   layout:
+    admin:
+      sidebar:
+        questions:
+          title: "Questions Management"
+          action:
+            list:  "All Questions"
+            add: "Add more question"
     carousels:
       carousel1:
         title: "Coderschool Classes"
@@ -43,3 +50,40 @@ en:
         android: "Android"
         button: "Detail"
         short_des: "Some quick example text to build on the card title and make up the bulk of the card's content."
+    admin:
+      action: "Remove"
+      flash:
+        admin_only: "You are havent permission to access to this page !"
+        please_login: "Please login !"
+      questions:
+        destroy:
+          success: "Question was successfully deleted !"
+          fail: "Question exist in examinations. ! Not allow to delete!"
+        delete:
+          title: "Delete This Question"
+          confirm: "Are you sure???"
+        add_answer: "Add new answer"
+        tables:
+          stt: "No."
+          content: "Content"
+          course_name: "Course"
+          action: "Action"
+          complexity: "Complexity"
+        add:
+          new: "Add new"
+        index:
+          title: "List all questions"
+        edit:
+          title: "Edit question"
+          success: "Question edited successfully !!!"
+          error: "Something went wrong"
+        new:
+          title: "Add new question"
+          error: "Something went wrong !!!"
+          success: "Question created successfully !!!"
+          question_information:
+              title: "Question Information"
+              content: "Content"
+              suggestion: "Suggestion"
+      answers:
+        title: "Answers"
