@@ -87,3 +87,15 @@ en:
               suggestion: "Suggestion"
       answers:
         title: "Answers"
+  feedback:
+    successfully_created: "Your feedback has been successfully submitted"
+    successfully_updated: "Your response has been successfully submitted"
+    successfully_destroyed: "Feedback has been successfully deleted"
+    name: "Your name"
+    email: "Your email"
+    content: "Content"
+    response: "Response"
+    delete: "Delete"
+    edit: "Edit"
+    back: "Back"
+    send_feedback: "Send Feedback"

@@ -1,0 +1,8 @@
+<section class="container"> 
+<h1><%= t "feedbacks.edit_feedback" %></h1> 
+ 
+<%= render 'form', feedback: @feedback %> 
+ 
+<%= link_to t("feedbacks.show"), admin_feedback_path(@feedback) %> | 
+<%= link_to t("feedbacks.back"), admin_feedbacks_path %> 
+</section>
