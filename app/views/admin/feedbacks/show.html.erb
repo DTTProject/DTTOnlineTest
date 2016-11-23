@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p> 
+<section class="container"> 
+<p> 
+  <strong><%= t("feedback.name") %>:</strong> 
+  <%= @feedback.name %> 
+</p> 
+ 
+<p> 
+  <strong><%= t("feedback.email") %>:</strong> 
+  <%= @feedback.email %> 
+</p> 
+ 
+<p> 
+  <strong><%= t("feedback.content") %>:</strong> 
+  <%= @feedback.content %> 
+</p> 
+ 
+<p> 
+  <strong><%= t("feedback.response") %>:</strong> 
+  <%= @feedback.response %> 
+</p> 
+ 
+<%= link_to t("feedback.response"), edit_admin_feedback_path(@feedback), class: "btn btn-warning" %> | 
+<%= link_to t("feedback.back"), admin_feedbacks_path, class: "btn btn-primary" %> | 
+<%= link_to t("feedback.delete"), admin_feedback_path(@feedback), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %> 
+</section>

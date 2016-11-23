@@ -1,0 +1,17 @@
+<section class="container">
+
+<h1>Feedbacks</h1>
+
+<div class="container-fluid">
+    <% @feedbacks.in_groups_of(2) do |g| %>
+      <div class="row">
+        <% g.compact.each do |e| %>
+            <%= render e %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<script type="text/javascript"> 
+  initializeFeedbackDelete(); 
+</script>

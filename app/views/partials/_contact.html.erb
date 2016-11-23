@@ -18,28 +18,30 @@
       <p>Feel free to drop us a feeback</p>
       <br>
 
+    <%= form_for [:admin, Feedback.new] do |f| %>
       <!--Body-->
       <div class="md-form">
         <i class="fa fa-user prefix"></i>
-        <input type="text" id="form3" class="form-control">
-        <label for="form3">Your name</label>
+        <%= f.text_field :name, class: "form-control" %>
+        <%= f.label :name, 'Your name' %><br>
       </div>
 
       <div class="md-form">
         <i class="fa fa-envelope prefix"></i>
-        <input type="text" id="form2" class="form-control">
-        <label for="form2">Your email</label>
+        <%= f.text_field :email, class: "form-control" %>
+        <%= f.label :email, 'Your email' %><br>
       </div>
 
       <div class="md-form">
         <i class="fa fa-pencil prefix"></i>
-        <textarea type="text" id="form8" class="md-textarea"></textarea>
-        <label for="form8">Content</label>
+        <%= f.text_field :content, class: "form-control" %>
+        <%= f.label :content %><br>
       </div>
 
       <div class="text-xs-center">
-        <button class="btn btn-default">Submit</button>
+        <%= f.submit t("feedback.send_feedback"), :class => 'btn btn-default' %>
       </div>
+    <% end %>
     </div>
   </div>
   <div class="col-md-4 col-md-offset-1">

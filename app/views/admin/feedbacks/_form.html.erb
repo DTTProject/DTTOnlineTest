@@ -1,0 +1,33 @@
+<%= form_for [:admin, @feedback] do |f| %>
+  <% if @feedback.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
+
+      <ul>
+      <% @feedback.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.text_field :name, placeholder: t("feedback.name"), class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :email, placeholder: t("feedback.email"), class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.text_area :content, placeholder: t("feedback.content"), class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Response" %> <%= f.check_box :response %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>
