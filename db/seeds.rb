@@ -10,3 +10,8 @@ Course.create([
   {name: "NodeJs", description: Faker::Lorem.sentence(3), question_numbers: Faker::Number.between(5,15), duration: Faker::Number.between(10,20), image: Faker::Avatar.image },
   {name: "IOS", description: Faker::Lorem.sentence(3), question_numbers: Faker::Number.between(5,15), duration: Faker::Number.between(10,20), image: Faker::Avatar.image}
 ]);
+Feedback.create([
+  {name: "Brad", email: "a@a.com", content: Faker::Lorem.sentence(2), response: true},
+  {name: "Kim", email: "b@b.com", content: Faker::Lorem.sentence(2), response: false},
+  {name: "Luke", email: "c@c.com", content: Faker::Lorem.sentence(2), response: true}
+]);

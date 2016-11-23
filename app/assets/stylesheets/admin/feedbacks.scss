@@ -1,0 +1,15 @@
+// Place all the styles related to the admin/Feedbacks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.new_feedback > .md-form,
+.new_feedback > .md-form > input[type=text] {
+  margin-bottom: 0px;
+  padding-top: 10px;
+}
+.new_feedback > .md-form > input[type=text] {
+  padding-bottom: 0px;
+}
+.edit_feedback input[type=checkbox] {
+  left: auto;
+  visibility: visible;
+}

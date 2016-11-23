@@ -1,0 +1,28 @@
+<div class="col-md-6 feedback-block"> 
+   
+  <div class="card">
+    <div class="card-block">
+      <%= link_to admin_feedback_path(feedback) do %>
+        <p>
+          <span style="font-weight: bold"><%= t("feedback.name") %>: </span>
+          <span><%= feedback.name %></span>
+        </p>
+      <% end %>
+      <p>
+        <span style="font-weight: bold"><%= t("feedback.email") %>: </span>
+        <span><%= feedback.email %></span>
+      </p>
+      <p>
+        <span style="font-weight: bold"><%= t("feedback.content") %>: </span>
+        <span><%= feedback.content %></span>
+      </p>
+      <p>
+        <span style="font-weight: bold"><%= t("feedback.response") %>: </span>
+        <span><%= feedback.response %></span>
+      </p>
+    </div>
+    <%= link_to t("feedback.response"), edit_admin_feedback_path(feedback), class: "btn btn-warning" %> | 
+    <%= link_to t("feedback.delete"), admin_feedback_path(feedback), method: :delete, class: "btn btn-danger feedback-delete-button" %>
+  </div>
+  
+</div>
