@@ -1,0 +1,7 @@
+<section class="container">
+<h1><%= t("courses.new_course") %></h1>
+
+<%= render 'form', course: @course %>
+
+<%= link_to t("courses.back"), admin_courses_path %>
+</section>

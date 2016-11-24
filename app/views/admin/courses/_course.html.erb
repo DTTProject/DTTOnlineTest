@@ -1,0 +1,23 @@
+<div class="col-md-6 course-block">
+  
+  <div class="card">
+    <img class="card-img-top" src="<%= course.image.thumb.url %>">
+    <div class="card-block">
+      <%= link_to admin_course_path(course) do %>
+      <h4 class="card-title"><%= course.name %></h4>
+      <% end %>
+      <p>
+        <span style="font-weight: bold"><%= t("courses.number_of_question") %>: </span>
+        <span><%= course.question_numbers %></span>
+      </p>
+      <p>
+        <span style="font-weight: bold"><%= t("courses.duration") %>: </span>
+        <span><%= course.duration %> <%= t("time.minute") %></span>
+      </p>
+      <p class="card-text"><%= course.description %></p>
+    </div>
+    <%= link_to t("courses.edit"), edit_admin_course_path(course), class: "btn btn-warning" %> |
+    <%= link_to t("courses.delete"), admin_course_path(course), method: :delete, class: "btn btn-danger course-delete-button" %>
+  </div>
+  
+</div>  

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<section class="container">
+<p>
+  <strong><%= t("courses.name") %>:</strong>
+  <%= @course.name %>
+</p>
+
+<p>
+  <strong><%= t("courses.description") %>:</strong>
+  <%= @course.description %>
+</p>
+
+<p>
+  <strong><%= t("courses.number_of_question") %>:</strong>
+  <%= @course.question_numbers %>
+</p>
+
+<p>
+  <strong><%= t("courses.duration") %>:</strong>
+  <%= @course.duration %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <% if @course.image? %>
+    <%= image_tag @course.image.thumb.url %>
+  <% end %>
+</p>
+
+<%= link_to t("courses.edit"), edit_admin_course_path(@course), class: "btn btn-warning" %> |
+<%= link_to t("courses.back"), admin_courses_path, class: "btn btn-primary" %> |
+<%= link_to t("courses.delete"), admin_course_path(@course), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+</section>

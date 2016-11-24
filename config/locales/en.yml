@@ -52,6 +52,22 @@ en:
       signup: "SignUp"
       courses: "Courses"
       feedback: "Feedback"
+  courses:
+    new_course: "New Course"
+    create_course: "Create Course"
+    number_of_question: "Number of question"
+    duration: "Duration"
+    show: "Show"
+    edit: "Edit"
+    back: "Back"
+    delete: "Delete"
+    name: "Name"
+    description: "Description"
+    successfully_created: "Course was successfully created."
+    successfully_updated: "Course was successfully updated."
+    successfully_destroyed: "Course was successfully destroyed."
+  time:
+    minute: "minutes"
   page:
     home:
       authentication:
