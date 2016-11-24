@@ -12,7 +12,20 @@ $(document).on('turbolinks:load', function(){
   });
 
   //Scroll page
+  $('.home_link').on('click', function(){
+    $('html body').animate({
+      scrollTop: 0
+    }, 1000);
+  });
   $('.nav-head .nav-item a').on('click',function(e){
+    e.preventDefault();
+    var targetId = e.currentTarget.id + 'Section';
+    $('html body').animate({
+      scrollTop: $('#' + targetId).offset().top
+    }, 1000);
+  });
+
+  $('.go_to_test').on('click',function(e){
     e.preventDefault();
     var targetId = e.currentTarget.id + 'Section';
     $('html body').animate({

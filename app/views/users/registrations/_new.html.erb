@@ -1,0 +1,62 @@
+<!-- Modal Register -->
+<div class="modal fade modal-ext" id="modal-register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3><i class="fa fa-user" style="margin-right: 5px"></i><%= t "page.home.authentication.register" %></h3>
+        <a href="" class="btn-floating btn-fb btn-small"><i class="fa fa-facebook"></i></a>
+        <a href="" class="btn-floating btn-tw btn-small"><i class="fa fa-twitter"></i></a>
+        <a href="" class="btn-floating btn-gplus btn-small"><i class="fa fa-google-plus"></i></a>
+        <a href="" class="btn-floating btn-li btn-small"><i class="fa fa-linkedin"></i></a>
+        <a href="" class="btn-floating btn-git btn-small"><i class="fa fa-github"></i></a>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+        <%= devise_error_messages! %>
+        <div class="md-form">
+          <i class="fa fa-envelope prefix"></i>
+          <!-- <input type="text" id="form2" class="form-control"> -->
+          <%= f.email_field :email, autofocus: true, class: "form-control" %>
+          <label for="form2"><%= t "page.home.authentication.email" %></label>
+        </div>
+
+        <div class="md-form">
+          <i class="fa fa-lock prefix"></i>
+          <!-- <input type="password" id="form3" class="form-control"> -->
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+          <label for="form3"><%= t "page.home.authentication.password" %></label>
+        </div>
+
+        <div class="md-form">
+          <i class="fa fa-lock prefix"></i>
+          <!-- <input type="password" id="form4" class="form-control"> -->
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+          <label for="form4"><%= t "page.home.authentication.repassword" %></label>
+        </div>
+
+        <div class="text-xs-center">
+          <!-- <button class="btn btn-primary btn-lg"><%= t "page.home.authentication.buttons.signup" %></button> -->
+          <%= f.submit t("page.home.authentication.buttons.signup"), class: "btn btn-primary btn-lg" %>
+        </div>
+      </div>
+      <!--Footer-->
+      <div class="modal-footer">
+        <div class="options">
+          <p>Already have an account? <a href="#" class="button_register_user">Log in</a></p>
+        </div>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    <% end %>
+    <!--/.Content-->
+  </div>
+</div>

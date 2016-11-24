@@ -116,7 +116,7 @@ footer.page-footer {
 
 .md-form {
     label.active {
-        transform: translateY(-10%) !important;
+        transform: translateY(-20px) !important;
     }
 }
 
@@ -132,4 +132,66 @@ footer.page-footer {
 
 .toast-top-right {
     top: 6rem !important;
+}
+
+ul.nav-head > li.user_email {
+  position: relative;
+  cursor: pointer;
+}
+
+ul.drop-menu {
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  width: 100%;
+  padding: 0;
+}
+
+ul.drop-menu li {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  height: 50px;
+  line-height: 50px;
+}
+ul.drop-menu li:hover {
+  background: #606060;
+}
+ul.drop-menu li:last-child {
+  border-radius: 0px 0px 5px 5px;
+}
+
+ul.drop-menu li {
+  display: none;
+}
+
+li:hover > ul.drop-menu li {
+  display: block;
+}
+
+
+li:hover > ul.drop-menu li:nth-child(1) {
+  opacity: 0;
+  animation: menu-1 300ms ease-in-out forwards ;
+}
+
+li:hover > ul.drop-menu li:nth-child(2) {
+  opacity: 0;
+  animation: menu-1 600ms ease-in-out forwards ;
+}
+
+li:hover > ul.drop-menu li:nth-child(3) {
+  opacity: 0;
+  animation: menu-1 900ms ease-in-out forwards ;
+}
+
+@keyframes menu-1 {
+  0% {
+    opacity: 0;
+    transform: rotateY(-90deg) translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotateY(0) translateY(0px);
+  }
 }

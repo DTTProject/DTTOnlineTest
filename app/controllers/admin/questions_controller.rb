@@ -1,6 +1,7 @@
 class Admin::QuestionsController < ApplicationController
   layout "admin"
-  # before_action :check_if_admin
+  before_action :authenticate_user!
+  before_action :check_if_admin
   before_action :load_courses
   before_action :load_question, only: [:edit, :update, :destroy]
   def index

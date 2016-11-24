@@ -61,3 +61,5 @@ gem 'config'
 # Toast messages
 gem 'toastr-rails'
 gem 'kaminari'
+gem 'devise'
+gem 'cancancan'

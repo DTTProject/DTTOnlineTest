@@ -1,4 +1,17 @@
 en:
+  devise:
+    email:
+      welcome:
+        title: "Welcome"
+        content: "Thanks for enjoing us. ! Goodluck"
+    logout: "Logout"
+    sessions:
+      had_been_signed_in: " had been signed in"
+      invalid: "invalid email or password"
+      user:
+        signed_in: 'Welcome user, you are signed in.'
+      admin:
+        signed_in: 'Hello admin!'
   layout:
     admin:
       sidebar:
@@ -41,6 +54,15 @@ en:
       feedback: "Feedback"
   page:
     home:
+      authentication:
+        login: "Login"
+        register: "Register"
+        email: "Your Email"
+        password: "Your Password"
+        repassword: "Repeat Password"
+        buttons:
+          signup: "Sign Up"
+          signin: "Sign In"
       title: "Coderschool Entrance Test"
       courses:
         title: "Our Courses"

@@ -1,3 +1,4 @@
+
 module ApplicationHelper
   def link_to_add_fields name, f, association
     new_object = f.object.send(association).klass.new
@@ -31,4 +32,14 @@ module ApplicationHelper
   #     html_options['href'] = '#'
   #     content_tag(:a, name, html_options, &block)
   # end
+  #
+  def resource_name
+    :user
+  end
+  def resource
+    @resource ||= User.new
+  end
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
 end

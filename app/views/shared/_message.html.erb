@@ -1,9 +1,7 @@
 <% unless flash.empty? %>
   <script type="text/javascript">
-    $(document).on('turbolinks:load', function(){
-      <% flash.each do |f| %>
-        toastr["<%= f[0].to_s %>"]("<%= f[1] %>")
-      <% end %>
-    })
+    <% flash.each do |f| %>
+      toastr["<%= f[0].to_s %>"]("<%= f[1] %>")
+    <% end %>
   </script>
 <% end %>

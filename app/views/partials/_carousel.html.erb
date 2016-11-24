@@ -23,9 +23,11 @@
           <li>
             <p class="flex-center"><%= t "layout.carousels.carousel1.content" %></p>
           </li>
-          <li>
-            <a target="_blank" href="http://mdbootstrap.com/getting-started/" class="btn btn-info btn-lg carousel-button"><%= t "layout.carousels.carousel1.button" %></a>
-          </li>
+          <% unless user_signed_in? %>
+            <li>
+              <a target="_blank" href="#" class="btn btn-info btn-lg carousel-button" data-toggle="modal" data-target="#modal-register"><%= t "layout.carousels.carousel1.button" %></a>
+            </li>
+          <% end %>
         </ul>
       </div>
       <!--Caption-->
@@ -45,10 +47,12 @@
           <li>
             <p><%= t "layout.carousels.carousel2.content" %></p>
           </li>
-          <li>
-            <a target="_blank" href="http://mdbootstrap.com/bootstrap-tutorial/" class="btn btn-primary btn-lg carousel-button"><%= t "layout.carousels.carousel2.button.signup" %></a>
-            <a target="_blank" href="http://mdbootstrap.com/bootstrap-tutorial/" class="btn btn-success btn-lg carousel-button"><%= t "layout.carousels.carousel2.button.signin" %></a>
-          </li>
+          <% unless user_signed_in? %>
+            <li>
+              <a target="_blank" href="#" class="btn btn-primary btn-lg carousel-button" data-toggle="modal" data-target="#modal-register"><%= t "layout.carousels.carousel2.button.signup" %></a>
+              <a target="_blank" href="#" data-toggle="modal" data-target="#modal-login" class="btn btn-success btn-lg carousel-button"><%= t "layout.carousels.carousel2.button.signin" %></a>
+            </li>
+          <% end %>
         </ul>
       </div>
       <!--Caption-->
@@ -66,7 +70,7 @@
               <p><%= t "layout.carousels.carousel3.content" %></p>
             </li>
             <li>
-              <a target="_blank" href="http://mdbootstrap.com/forums/forum/support/" class="btn btn-default btn-lg carousel-button"><%= t "layout.carousels.carousel3.button" %></a>
+              <a target="_blank" id="courses" href="#coursesSection" class="btn btn-default btn-lg carousel-button go_to_test"><%= t "layout.carousels.carousel3.button" %></a>
             </li>
           </ul>
         </div>
