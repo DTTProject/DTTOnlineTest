@@ -1,5 +1,4 @@
 <div class="col-md-6 course-block">
-  
   <div class="card">
     <img class="card-img-top" src="<%= course.image.thumb.url %>">
     <div class="card-block">
@@ -16,8 +15,7 @@
       </p>
       <p class="card-text"><%= course.description %></p>
     </div>
-    <%= link_to t("courses.edit"), edit_admin_course_path(course), class: "btn btn-warning" %> |
+    <%= link_to t("courses.edit"), edit_admin_course_path(course), class: "btn btn-warning", remote: true %> |
     <%= link_to t("courses.delete"), admin_course_path(course), method: :delete, class: "btn btn-danger course-delete-button" %>
   </div>
-  
-</div>  
+</div>

@@ -1,91 +1,25 @@
+<% content_for :admin_header_title do %>
+  <%= t "page.admin.courses.header_title" %>
+<% end %>
+
 <section class="container">
-<p id="notice"><%= notice %></p>
-
-<h1>Courses</h1>
-
 <div class="container-fluid">
     <% @courses.in_groups_of(2) do |g| %>
       <div class="row">
         <% g.compact.each do |e| %>
             <%= render e %>
         <% end %>
-      </div>  
+      </div>
     <% end %>
   </div>
 </div>
-
 <br>
-
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-new-course">
   <i class="fa fa-plus" aria-hidden="true"></i> <%= t "courses.new_course" %>
 </button>
 
-<!-- Modal New Course -->
-<div class="modal fade modal-ext" id="modal-new-course" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <!--Content-->
-        <div class="modal-content">
-           
-            <!--Header-->
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h3><i class="fa fa-book" aria-hidden="true"></i> <%= t "courses.new_course" %></h3>
-            </div>
-            
-            <!--Body-->
-            <div class="modal-body">
-              <% @course = Course.new %>            
-              <%= form_for [:admin, @course], html: { multipart: true } do |f| %>
-                <% if @course.errors.any? %>
-                  <div id="error_explanation">
-                    <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
-
-                    <ul>
-                    <% @course.errors.full_messages.each do |message| %>
-                      <li><%= message %></li>
-                    <% end %>
-                    </ul>
-                  </div>
-                <% end %>
-
-                <div class="field md-form">
-                  <%= f.text_field :name, placeholder: t("courses.name"), class: "form-control" %>
-                </div>
-
-                <div class="field md-form">
-                  <%= f.text_area :description, placeholder: t("courses.description"), class: "form-control" %>
-                </div>
-
-                <div class="field md-form">
-                  <%= f.number_field :question_numbers, placeholder: t("courses.number_of_question"), class: "form-control" %>
-                </div>
-
-                <div class="field md-form">
-                  <%= f.number_field :duration, placeholder: t("courses.duration"), class: "form-control" %>
-                </div>
-
-                <div class="field">
-                  <%= f.label :image, class: "float-label" %>
-                  <%= f.file_field :image, class: "form-control" %>
-                  <% if f.object.image? %>
-                    <%= image_tag f.object.image.thumb.url %>
-                  <% end %>
-                </div>
-
-                <div class="actions">
-                  <button type="submit" name="commit" class="btn btn-primary" data-disable-with="Create Course">
-                  <i class="fa fa-plus" aria-hidden="true"></i> <%= t "courses.create_course" %>
-                  </button>
-                </div>
-              <% end %>
-            </div>
-        </div>
-        <!--/.Content-->
-    </div>
-</div>
-
+<%= render 'modal_new' %>
+<%= render 'modal_edit' %>
 <script type="text/javascript">
   initializeCourseDelete();
 </script>

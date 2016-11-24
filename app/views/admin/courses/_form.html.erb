@@ -1,41 +1,35 @@
-<%= form_for [:admin, @course], html: { multipart: true } do |f| %>
-  <% if @course.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+<%= form_for [:admin, course], html: { multipart: true } do |f| %>
+<div class="field md-form">
+  <%= f.text_field :name, class: "form-control" %>
+  <label for="form1" class=""><%= t("courses.name") %></label>
+</div>
 
-      <ul>
-      <% @course.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<div class="field md-form">
+  <%= f.text_area :description, class: "form-control md-textarea" %>
+  <label for="form7"><%= t("courses.description") %></label>
+</div>
+
+<div class="field md-form">
+  <%= f.number_field :question_numbers, class: "form-control" %>
+  <label for="form1" class=""><%= t("courses.number_of_question") %></label>
+</div>
+
+<div class="field md-form">
+  <%= f.number_field :duration, class: "form-control" %>
+  <label><%= t("courses.duration") %></label>
+</div>
+
+<div class="field">
+  <%= f.label :image, class: "float-label" %>
+  <%= f.file_field :image, class: "form-control" %>
+  <% if f.object.image? %>
+  <%= image_tag f.object.image.thumb.url %>
   <% end %>
+</div>
 
-  <div class="field form-group">
-    <%= f.text_field :name, placeholder: t("courses.name"), class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.text_area :description, placeholder: t("courses.description"), class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.number_field :question_numbers, placeholder: t("courses.number_of_question"), class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.number_field :duration, placeholder: t("courses.duration"), class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :image, class: "float-label" %>
-    <%= f.file_field :image, class: "form-control" %>
-    <% if f.object.image? %>
-      <%= image_tag f.object.image.thumb.url %>
-    <% end %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit class: "btn btn-primary" %>
-  </div>
+<div class="actions">
+  <button type="submit" name="commit" class="btn btn-primary submit_edit_course">
+    <%= t "courses.submit" %>
+  </button>
+</div>
 <% end %>

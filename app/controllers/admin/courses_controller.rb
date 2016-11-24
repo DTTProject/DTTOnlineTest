@@ -2,44 +2,43 @@ class Admin::CoursesController < ApplicationController
   layout "admin"
   before_action :set_course, except: :index
 
-  # GET /courses
   def index
     @courses = Course.all
   end
 
-  # GET /courses/1
   def show
   end
 
-  # GET /courses/new
-  def new
-    @course = Course.new
-  end
-
-  # GET /courses/1/edit
   def edit
   end
 
-  # POST /courses
   def create
-    @course = Course.new(course_params)
-    if @course.save
-      redirect_to admin_courses_path, notice: t("courses.successfully_created")
-    else
-      render :new
+    @course = Course.new course_params
+    respond_to do |format|
+      if @course.save
+        format.json do
+          render json: @course, status: :created
+        end
+      else
+        format.json {render json: @course.errors, status: :unprocessable_entity}
+      end
     end
   end
 
-  # PATCH/PUT /courses/1
   def update
-    if @course.update(course_params)
-      redirect_to admin_courses_path, notice: t("courses.successfully_updated")
-    else
-      render :edit
+    respond_to do |format|
+      if @course.update course_params
+        format.json do
+          render json: @course, status: :ok
+        end
+      else
+        format.json do
+          render json: @course.errors, status: :unprocessable_entity
+        end
+      end
     end
   end
 
-  # DELETE /courses/1
   def destroy
     @course.destroy
     redirect_to courses_url, notice: t("courses.successfully_destroyed")

@@ -53,7 +53,9 @@ en:
       courses: "Courses"
       feedback: "Feedback"
   courses:
+    submit: "Submit"
     new_course: "New Course"
+    edit_course: "Edit Course"
     create_course: "Create Course"
     number_of_question: "Number of question"
     duration: "Duration"
@@ -89,6 +91,10 @@ en:
         button: "Detail"
         short_des: "Some quick example text to build on the card title and make up the bulk of the card's content."
     admin:
+      courses:
+        header_title: "Courses"
+        create:
+          success: "Course created successfully!!!"
       action: "Remove"
       flash:
         admin_only: "You are havent permission to access to this page !"
