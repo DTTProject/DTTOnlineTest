@@ -3,9 +3,13 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: "users/registrations",
     sessions: "users/sessions"}
   namespace :admin do
-    root "users#index"
+    root "users#log"
     resources :courses
-    resources :users
+    resources :users do
+      collection do
+        get 'log'
+      end
+    end
     resources :questions
   end
 end

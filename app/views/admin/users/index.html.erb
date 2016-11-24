@@ -1,5 +1,46 @@
 <%= content_for :admin_header_title do %>
-  User Management
+<%= t "page.admin.users.index.title" %>
 <% end %>
 
-#heey index admin users here
+<table class="table" id="all_users_table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>#</th>
+      <th><%= t "page.admin.users.index.tables.email" %></th>
+      <th><%= t "page.admin.users.index.tables.questions_contributed" %></th>
+      <th><%= t "page.admin.users.index.tables.tested" %></th>
+      <th><%= t "page.admin.users.index.tables.action" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each_with_index do |user, index| %>
+      <%= render "user", user: user %>
+    <% end %>
+  </tbody>
+</table>
+<!-- Modal -->
+<div class="modal fade" id="modal_delete_user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel"><%= t "page.admin.users.delete.title" %></h4>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+                <%= t "page.admin.questions.delete.confirm" %>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary confirmed_delete_user">Yes</button>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>

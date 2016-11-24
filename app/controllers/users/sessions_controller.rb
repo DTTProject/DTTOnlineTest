@@ -40,7 +40,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def create_log
     # if params[:commit] == "Log in"
-      content = "#{current_user.email} #{t("devise.sessions.had_been_signed_in")} \n"
+      content = "User #{current_user.email} #{t("devise.sessions.had_been_signed_in")} \n"
     # end
     CUSTOM_LOGGER.info content
   end

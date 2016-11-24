@@ -42,4 +42,16 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+
+  def generate_log
+    f = File.open(File.join(Settings.log_directory, "admin.log"), "r")
+    html_string = ""
+    f.each_line do |line|
+      if line.length > 0
+        html_string << "<div class='card'><div class='card-block'><p class='card-text'>#{line}</p></div></div>"
+      end
+    end
+    html_string.html_safe
+  end
 end
+

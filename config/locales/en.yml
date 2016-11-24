@@ -91,6 +91,17 @@ en:
         button: "Detail"
         short_des: "Some quick example text to build on the card title and make up the bulk of the card's content."
     admin:
+      users:
+        delete:
+          title: "Block This User???"
+        index:
+          title: "All Users"
+          tables:
+            email: "Email"
+            questions_contributed: "Questions contributed"
+            tested: "Number Of Test"
+            action: "Action"
+        log: "Log Users Login To System"
       courses:
         header_title: "Courses"
         create:

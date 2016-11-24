@@ -1,0 +1,17 @@
+<tr class="<%= user.deleted? ? 'inactive' : '' %>">
+  <td>
+    <fieldset class="form-group">
+      <input type="checkbox" id="checkbox1">
+      <label for="checkbox1"></label>
+    </fieldset>
+  </td>
+  <th scope="row">1</th>
+  <td><%= user.email %></td>
+  <td><%= user.questions.size %></td>
+  <td><%= user.tests.size %></td>
+  <td>
+    <a class="red-text user_<%= user.id %>" data-toggle="modal"  id="<%= user.id %>"  data-target= "<%= user.deleted? ? '' : '#modal_delete_user' %>" ><i class="fa fa-times"></i> Block</a>
+    <a class="blue-text restore_user user_<%= user.id %>" id="<%= user.id %>"><i class="fa fa-window-restore" aria-hidden="true"></i> Restore</a>
+  </td>
+</tr>
+
