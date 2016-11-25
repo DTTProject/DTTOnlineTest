@@ -57,7 +57,6 @@ end
 gem 'materialize-sass'
 gem 'config'
 gem 'faker'
-gem 'config'
 # Toast messages
 gem 'toastr-rails'
 gem 'kaminari'
