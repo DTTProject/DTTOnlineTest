@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :questions, dependent: :destroy
   has_many :tests, dependent: :destroy
   has_many :comments, dependent: :destroy
+  mount_uploader :avatar, AvatarUploader
 
   enum role: [:user, :admin]
 

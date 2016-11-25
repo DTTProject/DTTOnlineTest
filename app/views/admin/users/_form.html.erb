@@ -1,0 +1,20 @@
+<%= form_for [:admin, user], html: { multipart: true } do |f| %>
+<div class="field">
+  <% if f.object.avatar? %>
+    <%= image_tag f.object.avatar.thumb.url %>
+  <% end %>
+  <%= f.label :avatar, class: "float-label" %>
+  <%= f.file_field :avatar, class: "form-control" %>
+</div>
+
+<div class="field md-form">
+  <%= f.text_field :name, class: "form-control" %>
+  <label for="form1" class=""><%= t("page.admin.users.name") %></label>
+</div>
+
+<div class="actions">
+  <button type="submit" name="commit" class="btn btn-primary submit_edit_user">
+    <%= t "page.admin.users.submit" %>
+  </button>
+</div>
+<% end %>

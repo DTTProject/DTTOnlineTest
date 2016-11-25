@@ -102,6 +102,9 @@ en:
             tested: "Number Of Test"
             action: "Action"
         log: "Log Users Login To System"
+        submit: "Submit"
+        name: "Name"
+        change: "Change"
       courses:
         header_title: "Courses"
         create:
