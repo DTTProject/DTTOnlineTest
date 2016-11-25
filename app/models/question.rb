@@ -10,6 +10,9 @@ class Question < ApplicationRecord
   enum status: [:accepted, :pending, :rejected]
   enum complexity: [:Difficult, :Normal, :Easy]
 
+  scope :contribution, ->{joins(:user).where(users: {role: 0}).where.not(questions: {user_id: nil})}
+  # scope :order_desc, ->{order('created_at DESC')}
+
   accepts_nested_attributes_for :answers, allow_destroy: true, reject_if: :reject_answers
 
 

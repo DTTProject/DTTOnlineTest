@@ -134,6 +134,9 @@ en:
         admin_only: "You are havent permission to access to this page !"
         please_login: "Please login !"
       questions:
+        contributions:
+          menu: "Question Contributions"
+          title: "User's Questions Contribution"
         destroy:
           success: "Question was successfully deleted !"
           fail: "Question exist in examinations. ! Not allow to delete!"
@@ -147,6 +150,7 @@ en:
           course_name: "Course"
           action: "Action"
           complexity: "Complexity"
+          status: "Status"
         add:
           new: "Add new"
         index:

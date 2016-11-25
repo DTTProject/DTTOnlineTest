@@ -1,0 +1,29 @@
+<%= content_for :admin_header_title do %>
+  <%= t "page.admin.questions.contributions.title" %>
+<% end %>
+
+<table class="table table-hover" id="admin_contribution_questions">
+  <thead>
+    <tr>
+      <th><%= t "page.admin.questions.tables.stt" %></th>
+      <th><%= t "page.admin.questions.tables.content" %></th>
+      <th><%= t "page.admin.questions.tables.course" %></th>
+      <th><%= t "page.admin.questions.tables.complexity" %></th>
+      <th><%= t "page.admin.questions.tables.status" %></th>
+      <th style="width: 20%"><%= t "page.admin.questions.tables.action" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @questions.size > 0 %>
+      <% @questions.each_with_index do |question, index| %>
+        <%= render 'contributed_question', index: index, question: question %>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan='6'>No data</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @questions %>
+<%= render "modal_show" %>

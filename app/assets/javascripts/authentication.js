@@ -11,6 +11,7 @@ $(document).on('turbolinks:load', function(){
       data: data,
       cache: false,
       success: function(result){
+        console.log(result);
         toastr["success"]('Signed up successfully !!!');
         $('#modal-register').modal('hide');
         location.reload();
@@ -48,9 +49,14 @@ $(document).on('turbolinks:load', function(){
       data: data,
       cache: false,
       success: function(result){
+        console.log(result);
         toastr["success"]('Signed in successfully !!!');
         $('#modal-login').modal('hide');
-        location.reload();
+        if(result.role == 'admin'){
+          window.location.replace("/admin");
+        }else {
+          location.reload();
+        }
       },
       error: function(xhr){
         toastr["error"](xhr.responseText);

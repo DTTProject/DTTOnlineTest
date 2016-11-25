@@ -38,6 +38,14 @@ namespace :db do
         Fabricate :question, user_id: user.id, status: 0, course_id: Course.ids.sample
       end
     end
+
+    puts "Create 4 answers for each question"
+    Question.all.each do |question|
+      3.times.each_with_index do |answer, index|
+        Fabricate :answer, question_id: question.id, correct: 0
+      end
+      Fabricate :answer, question_id: question.id, correct: 1
+    end
     puts "Success remake data"
   end
 end

@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function(){
     if(checkbox.checked) {
       $('.answers_checkbox').each(function(){
         if(checkbox != this){
-            $(this).prop("checked", false);
+          $(this).prop("checked", false);
         }
       })
     }
@@ -16,7 +16,7 @@ $(document).on('turbolinks:load', function(){
     var question_id = $(event.relatedTarget).attr('id');
     var modal =  $(this);
     modal.find('button.confirmed_delete_question').attr('question_id', question_id)
-})
+  })
   $('.confirmed_delete_question').on('click', function(){
     $('#model_delete_question').modal('hide');
     var question_id =  parseInt($(this).attr('question_id'));
@@ -33,6 +33,36 @@ $(document).on('turbolinks:load', function(){
           toastr['success']("Question deleted successfully");
           $('.question_' + result.id).parent().parent().remove();
         }
+      }
+    })
+  });
+
+  //Admin handle contributed questions
+  $('.admin_handle').on('click', function(e){
+    e.preventDefault();
+    var status = $(this).attr('status');
+    var question_id = $(this).attr('id');
+    // var href = $(this).attr('href');
+    $.ajax({
+      url: '/admin/questions/' + question_id,
+      method: 'PATCH',
+      dataType: 'JSON',
+      data: {question: {status: status, id: question_id}, id: question_id},
+      success: function(result){
+        toastr["success"]("Question updated successfully");
+        if(result.status == 'accepted') {
+          $('.question_' + result.id).removeClass('inactive');
+          $('.question_' + result.id).find('td:nth-child(5)').attr('class', 'text-success');
+          $('.question_' + result.id).find('td:nth-child(5)').html(result.status);
+        }else {
+          $('.question_' + result.id).addClass('inactive');
+          $('.question_' + result.id).find('td:nth-child(5)').attr('class', 'text-danger');
+          $('.question_' + result.id).find('td:nth-child(5)').html(result.status);
+        }
+        console.log(result);
+      },
+      error: function(err){
+        // toastr[]
       }
     })
   })

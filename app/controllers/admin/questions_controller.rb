@@ -1,11 +1,21 @@
 class Admin::QuestionsController < ApplicationController
   layout "admin"
   before_action :authenticate_user!
-  # before_action :check_if_admin
+  before_action :check_if_admin
   before_action :load_courses
-  before_action :load_question, only: [:edit, :update, :destroy]
+  before_action :load_question, except: :index
   def index
-    @questions = Question.includes(:course).page(params[:page]).per Settings.per_page
+    unless params[:contribution].nil?
+      @questions = Question.contribution.order_desc
+        .page(params[:page]).per Settings.per_page
+      render "admin/questions/contributions"
+    else
+      @questions = Question.includes(:course).order_desc
+        .page(params[:page]).per Settings.per_page
+    end
+  end
+
+  def show
   end
 
   def new
@@ -46,10 +56,16 @@ class Admin::QuestionsController < ApplicationController
           flash[:success] =  t "page.admin.questions.edit.success"
           redirect_to admin_questions_path
         end
+        format.json do
+          render json: @question, status: :ok
+        end
       else
         format.html do
           flash[:success] =  t "page.admin.questions.edit.error"
           render action: :edit
+        end
+        format.json do
+          render json: @question.errors, status: :unprocessable_entity
         end
       end
     end

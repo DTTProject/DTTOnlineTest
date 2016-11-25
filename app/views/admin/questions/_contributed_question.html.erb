@@ -1,0 +1,22 @@
+<tr class="question_<%= question.id %> <%= question.rejected? ? 'inactive' : '' %>">
+  <th scope="row"><%= index + 1 %></th>
+  <td><%= question.content %></td>
+  <td><%= question.course.name %></td>
+  <td><%= question.complexity %></td>
+  <td class="<%= question.accepted? ? 'text-success' : (question.pending? ? 'text-warning' : 'text-danger')%>">
+    <%= question.status %>
+  </td>
+  <td style="width: 20%">
+    <a href="<%= admin_question_path(question)%>" title="Detail" data-remote="true">
+      <i class="fa fa-info" aria-hidden="true"></i>
+    </a>
+    <% if question.pending? %>
+      <a class="text-success admin_handle" title="Accept" status="accepted" id="<%= question.id %>">
+        <i class="fa fa-check" aria-hidden="true"></i>
+      </a>
+      <a class="red-text admin_handle" title="Reject" status="rejected" id="<%= question.id %>" >
+        <i class="fa fa-times"></i>
+      </a>
+    <% end %>
+  </td>
+</tr>

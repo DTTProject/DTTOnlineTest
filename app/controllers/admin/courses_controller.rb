@@ -1,6 +1,7 @@
 class Admin::CoursesController < ApplicationController
   layout "admin"
   before_action :set_course, except: :index
+  before_action :check_if_admin
 
   def index
     @courses = Course.all

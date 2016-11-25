@@ -1,0 +1,3 @@
+$('#admin_question_contributed_detail').find('.modal-body')
+  .html("<%= j render 'detail', question: @question %>")
+$('#admin_question_contributed_detail').modal('show');

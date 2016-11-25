@@ -48,7 +48,7 @@ module ApplicationHelper
     html_string = ""
     f.each_line do |line|
       if line.length > 0
-        html_string << "<div class='card'><div class='card-block'><p class='card-text'>#{line}</p></div></div>"
+        html_string << "<tr class='card'><td>#{line}</td></tr>"
       end
     end
     html_string.html_safe

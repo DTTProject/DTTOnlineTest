@@ -1,11 +1,12 @@
 class Admin::UsersController < ApplicationController
   layout "admin"
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
+  before_action :check_if_admin
   before_action :load_user, only: :destroy
 
   def index
-    @users =  User.includes([:questions, :tests, :comments]).with_deleted.page(params[:page])
-      .per Settings.per_page
+    @users =  User.includes([:questions, :tests, :comments]).with_deleted
+      .order_desc.page(params[:page]).per Settings.per_page
   end
 
   def log
