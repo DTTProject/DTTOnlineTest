@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html>
   <%= render "partials/head" %>
-  <body>
+  <body class="<%= current_page?(root_url) ? '' : 'normal_body' %>">
     <!-- Message toast -->
     <%= render "shared/message"%>
     <!--Navbar-->
     <%= render "partials/navbar" %>
     <!--/.Navbar-->
-    <!--Carousel Wrapper-->
-    <%= render "partials/carousel" %>
-    <!--/.Carousel Wrapper-->
-    <br>
     <!--Content-->
     <%= yield %>
     <!--/.Content-->

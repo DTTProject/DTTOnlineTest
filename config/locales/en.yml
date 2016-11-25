@@ -71,7 +71,30 @@ en:
   time:
     minute: "minutes"
   page:
+    questions:
+      contributions:
+        detail:
+          title: "Question Detail"
+          content: "Content"
+          status: "Status"
+          course: "Course"
+          answers:
+            option: "Option %{option}"
+        index:
+          title: "Your's Contributions"
+          tables:
+            question_name: "Question Content"
+            status: "Status"
+            action: "Action"
+        best: "Best User's Contributions"
+        new:
+          title: "Create New Contribution"
     home:
+      nav:
+        users:
+          questions_contributed: "Contributions"
+          user_profile: "Your Profile"
+          update_profile: "Update Profile"
       authentication:
         login: "Login"
         register: "Register"

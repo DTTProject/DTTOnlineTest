@@ -9,6 +9,10 @@ class User < ApplicationRecord
 
   enum role: [:user, :admin]
 
+  scope :best_user_hash, ->(){joins(:questions).where(users: {role: 0})
+    .where.not(questions: {user_id: nil}).group('users.id')
+    .order('COUNT(*) DESC').limit(5)}
+
   before_create :normal_user_role
   after_create :send_email
 

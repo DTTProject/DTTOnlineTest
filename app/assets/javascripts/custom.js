@@ -17,7 +17,7 @@ $(document).on('turbolinks:load', function(){
       scrollTop: 0
     }, 1000);
   });
-  $('.nav-head .nav-item a').on('click',function(e){
+  $('.nav-head .nav-item > a.home_page_link').on('click',function(e){
     e.preventDefault();
     var targetId = e.currentTarget.id + 'Section';
     $('html body').animate({
@@ -43,6 +43,10 @@ $(document).on('turbolinks:load', function(){
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
   })
+
+  //Margin nav fixed
+  var contentPlacement = $('#header_fixed').position().top + $('#header_fixed').height();
+  $('#content').css('margin-top',contentPlacement);
 });
 
 //Function handle scroll

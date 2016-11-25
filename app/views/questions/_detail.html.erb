@@ -1,0 +1,34 @@
+<table class="table">
+  <tr class="thead-inverse">
+    <th colspan="2">Question Info</th>
+  </tr>
+  <tr>
+    <th><%= t "page.questions.contributions.detail.content" %></th>
+    <td>
+      <%= question.content %>
+    </td>
+  </tr>
+  <tr>
+    <th><%= t "page.questions.contributions.detail.status" %></th>
+    <td>
+      <%= question.status %>
+    </td>
+  </tr>
+  <tr>
+    <th><%= t "page.questions.contributions.detail.course" %></th>
+    <td>
+      <%= question.course.name %>
+    </td>
+  </tr>
+  <tr class="thead-inverse">
+    <th colspan="2">Answers</th>
+  </tr>
+  <% question.answers.each_with_index do |answer, index| %>
+    <tr>
+    <th><%= t "page.questions.contributions.detail.answers.option", option: index+1 %></th>
+      <td>
+        <%= answer.content %>
+      </td>
+    </tr>
+  <% end %>
+</table>

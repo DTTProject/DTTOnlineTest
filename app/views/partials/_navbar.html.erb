@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark navbar-fixed-top scrolling-navbar test_nav">
+<nav class="navbar navbar-dark navbar-fixed-top scrolling-navbar test_nav <%= current_page?(root_url) ? '' : 'not_home_page_nav' %>" id="header_fixed">
   <!-- Collapse button-->
   <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx">
     <i class="fa fa-bars"></i>
@@ -7,34 +7,40 @@
     <!--Collapse content-->
     <div class="collapse navbar-toggleable-xs" id="collapseEx">
       <!--Navbar Brand-->
-      <a class="navbar-brand" href="/" target="_blank"><%= t "layout.navbar.brand" %></a>
+      <a class="navbar-brand" href="/" ><%= t "layout.navbar.brand" %></a>
       <!--Links-->
       <ul class="nav navbar-nav float-xs-right nav-head">
         <li class="nav-item active">
-          <a class="nav-link home_link" href="#">
+          <a class="nav-link home_link" href="<%= current_page?(root_url) ? '#' : '/' %>">
             <i class="fa fa-home" aria-hidden="true"></i>
             <%= t "layout.navbar.home" %><span class="sr-only">(current)</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="courses" href="#coursesSection"><%= t "layout.navbar.courses" %></a>
+          <a class="nav-link <%= current_page?(root_url) ? 'home_page_link' : '' %>" id="courses" href="<%= current_page?(root_url) ? '#coursesSection' : '/#coursesSection' %>"><%= t "layout.navbar.courses" %></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="contact" href="#contactSection"><%= t "layout.navbar.feedback" %></a>
+          <a class="nav-link <%= current_page?(root_url) ? 'home_page_link' : '' %>" id="contact" href="<%= current_page?(root_url) ? '#contactSection' : '/#contactSection' %>"><%= t "layout.navbar.feedback" %></a>
         </li>
-        <li class="nav-item user_email">
-          <a class="nav-link" id="contact" href="#contactSection">
+
+        <li class="nav-item user_email <%= current_page?(root_url) ? '' : 'dropdown_not_home_page' %>">
+          <a class="nav-link <%= current_page?(root_url) ? 'home_page_link' : '' %>" id="contact" href="#contactSection">
             <%= user_signed_in? ? current_user.email : " "  %>
           </a>
           <ul class="drop-menu menu-1">
             <li>
-              <%= link_to '#' do %>
-                User Profile
+              <%= link_to questions_path do %>
+                <%= t "page.home.nav.users.questions_contributed" %>
               <% end %>
             </li>
             <li>
               <%= link_to '#' do %>
-                Change Password
+                <%= t "page.home.nav.users.user_profile" %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to '#' do %>
+                <%= t "page.home.nav.users.update_profile" %>
               <% end %>
             </li>
             <li>

@@ -1,0 +1,61 @@
+<div class="content new_contribute_question">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="wrap_best_content">
+          <h5 class="text-warning">
+            <i class="fa fa-trophy" aria-hidden="true"></i>
+            <%= t "page.questions.contributions.best"  %>
+          </h5>
+          <div class="row">
+            <%= render "best" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <h5 class="text-success">
+          <i class="fa fa-globe" aria-hidden="true"></i>
+          <%= t "page.questions.contributions.index.title" %>
+        </h5>
+        <div class="question_all">
+          <h6>You have <%= @questions.total_count %> contributions.  </h6>
+          <table class="table" id="questions_contributed">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>
+                  <%= t "page.questions.contributions.index.tables.question_name" %>
+                </th>
+                <th>
+                  <%= t "page.questions.contributions.index.tables.status" %>
+                </th>
+                <th style="width: 20%">
+                  <%= t "page.questions.contributions.index.tables.action" %>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @questions.each_with_index do |question, index| %>
+                <tr class="<%= question.rejected? ? 'inactive' : '' %>">
+                  <th scope="row"><%= index %></th>
+                  <td><%= question.content%></td>
+                  <td class="<%= question.accepted? ? 'text-success' : (question.pending? ? 'text-warning' : 'text-danger') %>">
+                    <%= question.status %>
+                  </td>
+                  <td style="width: 20%">
+                    <a class="blue-text" data-remote="true" href="<%= question_path(question)%>" data-toggle="modal" data-target="#question_contributed_detail">
+                    <i class="fa fa-info" aria-hidden="true"></i></a>
+                    <% if question.pending? %>
+                      <a class="teal-text" href="<%= edit_question_path(question) %>"><i class="fa fa-pencil"></i></a>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+           </tbody>
+         </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render "modal_show" %>

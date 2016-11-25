@@ -1,0 +1,65 @@
+<div class="content new_contribute_question">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="wrap_best_content">
+          <h5 class="text-warning">
+            <i class="fa fa-trophy" aria-hidden="true"></i>
+            <%= t "page.questions.contributions.best"  %>
+          </h5>
+          <div class="row">
+            <%= render "best" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <h5 class="text-success">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+          <%= t "page.questions.contributions.new.title"  %>
+        </h5>
+        <%= form_for @question  do |f| %>
+        <%= render "shared/model_object_error", object: f.object %>
+        <div class="new_question">
+          <div class="row">
+            <div class="col-md-12">
+              <!--Panel-->
+              <div class="card">
+                <h5 class="card-header primary-color white-text">
+                  <%= t "page.admin.questions.new.question_information.title" %>
+                </h5>
+                <div class="card-block">
+                  <%= render "form", f: f, question: @question %>
+                </div>
+              </div>
+              <!--/.Panel-->
+            </div>
+            <div class="col-md-12">
+              <div class="card">
+                <h5 class="card-header primary-color white-text">
+                  <%= t "page.admin.answers.title" %>
+                </h5>
+                <div class="card-block">
+                  <%= f.fields_for :answers do |answer| %>
+                    <%= render 'answer_fields', f: answer %>
+                  <% end %>
+                </div>
+                <div class="card-footer">
+                  <br/>
+                  <%= link_to_add_fields t("page.admin.questions.add_answer"),
+                f, :answers %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <%= f.submit "Submit" , class: "btn btn-success submit_category waves-effect btn blue"%>
+            </div>
+          </div>
+        </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

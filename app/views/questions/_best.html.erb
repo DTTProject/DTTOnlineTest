@@ -1,0 +1,15 @@
+<div class="col-md-12">
+  <% @contributes =  @users.size.values %>
+  <% @users.each_with_index do |user, key| %>
+    <!--First review-->
+    <div class="media">
+      <a class="media-left waves-light">
+        <img class="rounded-circle best_contribute_image_avatar" src="<%= user.avatar %>" alt="Generic placeholder image">
+      </a>
+      <div class="media-body">
+        <h4 class="media-heading"><%= user.name%></h4>
+        <p><%= @contributes[key] %> contrubitions</p>
+      </div>
+    </div>
+  <% end %>
+</div>

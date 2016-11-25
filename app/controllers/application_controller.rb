@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
       super
     else
       flash[:info] = "Please login!"
-      return false
+      redirect_to root_path
     end
   end
 end

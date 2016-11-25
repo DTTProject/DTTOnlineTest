@@ -1,11 +1,15 @@
-class Admin::QuestionsController < ApplicationController
-  layout "admin"
+class QuestionsController < ApplicationController
   before_action :authenticate_user!
-  # before_action :check_if_admin
-  before_action :load_courses
-  before_action :load_question, only: [:edit, :update, :destroy]
+  before_action :load_best_users
+  before_action :load_courses, only: [:new, :create, :edit]
+  before_action :load_question, except: :index
+
   def index
-    @questions = Question.includes(:course).page(params[:page]).per Settings.per_page
+    @questions = current_user.questions
+      .page(params[:page]).per Settings.per_page
+  end
+
+  def show
   end
 
   def new
@@ -14,12 +18,12 @@ class Admin::QuestionsController < ApplicationController
   end
 
   def create
-    @question  = Question.new question_params
+    @question  = current_user.questions.build question_params
     respond_to do |format|
        if @question.save
         format.html do
           flash[:success] = t "page.admin.questions.new.success"
-          redirect_to admin_questions_path
+          redirect_to questions_path
         end
         format.json do
           render json: @question, status: 200
@@ -27,6 +31,7 @@ class Admin::QuestionsController < ApplicationController
        else
         format.html do
           flash[:error] = t "page.admin.questions.new.error"
+          # flash[:error] = @question.errors.full_messages.to_sentence
           render action: :new
         end
         format.json do
@@ -41,10 +46,10 @@ class Admin::QuestionsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @question.update question_params
+      if current_user.questions.update question_params
         format.html do
           flash[:success] =  t "page.admin.questions.edit.success"
-          redirect_to admin_questions_path
+          redirect_to questions_path
         end
       else
         format.html do
@@ -55,34 +60,10 @@ class Admin::QuestionsController < ApplicationController
     end
   end
 
-  def destroy
-    respond_to do |format|
-      if @question.results.count > 0
-        @message = t "page.admin.questions.destroy.fail"
-        format.html do
-          flash[:warning] =  @message
-          redirect_to :back
-        end
-        format.json do
-          render json: {warning: {message: @message}}
-        end
-      else
-        @question.destroy
-        format.html do
-          redirect_to admin_questions_path,
-            success: t("page.admin.questions.destroy.success")
-        end
-        format.json do
-          render json: {id: params[:id], status: :ok}
-        end
-      end
-    end
-  end
-
   private
   def question_params
     params.require(:question). permit(
-      :id, :status,
+      :id, :status, :user_id,
       :course_id, :content,
       :suggestion, :complexity,
       answers_attributes: [:id, :content, :correct, :question_id, :_destroy]
@@ -94,6 +75,10 @@ class Admin::QuestionsController < ApplicationController
   end
 
   def load_question
-    @question =  Question.find_by id: params[:id]
+    @question =  Question.includes(:course).find_by id: params[:id]
+  end
+
+  def load_best_users
+    @users = User.send(:best_user_hash)
   end
 end

@@ -1,3 +1,7 @@
+<!--Carousel Wrapper-->
+<%= render "partials/carousel" %>
+<!--/.Carousel Wrapper-->
+<br/>
 <div class="container">
   <div class="row" id="coursesSection">
     <hr class="horizontal" />
@@ -17,7 +21,7 @@
             <!--Card image-->
             <div class="view overlay hm-white-slight">
               <%= image_tag course.image.thumb.url, alt: "", class: "img-fluid" %>
-              
+
               <a href="<%= admin_course_path(course) %>">
                 <div class="mask"></div>
               </a>

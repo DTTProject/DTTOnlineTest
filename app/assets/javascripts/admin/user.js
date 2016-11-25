@@ -1,5 +1,4 @@
 $(document).on('turbolinks:load', function(){
-  $('#all_users_table_length').html('');
   //Delete question
   $('#modal_delete_user').on('show.bs.modal', function (event) {
     var user_id = $(event.relatedTarget).attr('id');
