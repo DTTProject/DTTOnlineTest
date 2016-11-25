@@ -13,4 +13,9 @@ Rails.application.routes.draw do
     resources :questions
   end
   resources :questions
+  resources :users do
+    member do
+      get 'contributions'
+    end
+  end
 end

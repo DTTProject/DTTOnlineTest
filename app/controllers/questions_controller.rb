@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
+  include LoadBestUsers
   before_action :authenticate_user!
-  before_action :load_best_users
+  # before_action :load_best_users
   before_action :load_courses, only: [:new, :create, :edit]
   before_action :load_question, except: :index
 
@@ -78,7 +79,4 @@ class QuestionsController < ApplicationController
     @question =  Question.includes(:course).find_by id: params[:id]
   end
 
-  def load_best_users
-    @users = User.send(:best_user_hash)
-  end
 end

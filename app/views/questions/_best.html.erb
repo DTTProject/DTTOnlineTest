@@ -7,8 +7,12 @@
         <img class="rounded-circle best_contribute_image_avatar" src="<%= user.avatar %>" alt="Generic placeholder image">
       </a>
       <div class="media-body">
-        <h4 class="media-heading"><%= user.name%></h4>
-        <p><%= @contributes[key] %> contrubitions</p>
+        <h4 class="media-heading">
+          <a href="#"><%= user.name%></a>
+        </h4>
+        <p>
+          <a href="<%= (user.id == current_user.id) ? questions_path : contributions_user_path(id: user.id) %>"><%= @contributes[key] %> contrubitions</a>
+        </p>
       </div>
     </div>
   <% end %>

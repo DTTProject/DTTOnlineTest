@@ -8,7 +8,7 @@
             <%= t "page.questions.contributions.best"  %>
           </h5>
           <div class="row">
-            <%= render "best" %>
+            <%= render "questions/best" %>
           </div>
         </div>
       </div>
@@ -53,9 +53,10 @@
               <% end %>
            </tbody>
          </table>
+         <%= paginate @questions %>
         </div>
       </div>
     </div>
   </div>
 </div>
-<%= render "modal_show" %>
+<%= render "questions/modal_show" %>
