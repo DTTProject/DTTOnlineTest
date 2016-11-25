@@ -16,7 +16,9 @@
 
             <!--Card image-->
             <div class="view overlay hm-white-slight">
-              <%= image_tag course.image.thumb.url, alt: "", class: "img-fluid" %>
+              <% unless course.image.thumb.url.nil? %>
+                <%= image_tag course.image.thumb.url, alt: "", class: "img-fluid" %>
+              <% end %>
               
               <a href="<%= admin_course_path(course) %>">
                 <div class="mask"></div>
@@ -43,5 +45,3 @@
 
   <%= render "partials/contact" %>
 </div>
-
-
