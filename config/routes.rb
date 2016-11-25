@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "homepages#index"
   devise_for :users, controllers: {registrations: "users/registrations",
-    sessions: "users/sessions"}
+    sessions: "users/sessions", :omniauth_callbacks => "users/omniauth_callbacks"}
   namespace :admin do
     root "users#log"
     resources :courses
@@ -12,4 +12,5 @@ Rails.application.routes.draw do
     end
     resources :questions
   end
+
 end
