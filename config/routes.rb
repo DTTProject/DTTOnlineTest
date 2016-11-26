@@ -20,4 +20,5 @@ Rails.application.routes.draw do
     end
   end
   resources :feedbacks, only: :create
+  resources :courses, only: :show
 end

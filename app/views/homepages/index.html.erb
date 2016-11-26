@@ -9,8 +9,6 @@
       <p class="flex-center courses-title"><%= t "page.home.courses.title" %></p>
     </div>
   </div>
-
-  <% @courses = Course.all %>
   <% @courses.in_groups_of(3) do |g| %>
     <div class="row">
       <% g.compact.each do |course| %>
@@ -20,8 +18,11 @@
 
             <!--Card image-->
             <div class="view overlay hm-white-slight">
-              <%= image_tag course.image.thumb.url, alt: "", class: "img-fluid" %>
-
+              <% unless course.image.thumb.url.nil? %>
+                <%= image_tag course.image.thumb.url, alt: "", class: "img-fluid" %>
+              <% else  %>
+                <%= image_tag Faker::Placeholdit.image('ffffff'), alt: "", class: "img-fluid" %>
+              <% end %>
               <a href="<%= admin_course_path(course) %>">
                 <div class="mask"></div>
               </a>
@@ -34,7 +35,7 @@
               <h4 class="card-title"><%= course.name %></h4>
               <!--Text-->
               <p class="card-text"><%= course.description %></p>
-              <a href="<%= admin_course_path(course) %>" class="btn btn-primary"><%= t "page.home.courses.button" %></a>
+              <a href="<%= course_path(course) %>" class="btn btn-primary"><%= t "page.home.courses.button" %></a>
             </div>
             <!--/.Card content-->
 

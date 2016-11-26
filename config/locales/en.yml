@@ -71,6 +71,18 @@ en:
   time:
     minute: "minutes"
   page:
+    courses:
+      detail:
+        infos:
+          time: "Time"
+          number_of_question: "Total Questions"
+          exam_count: "Total exams"
+          description: "Description"
+        create:
+          real_test: "Create Exam"
+          practice: "Create Practice Test"
+        best_score: "Best Score"
+        title: "Course Information"
     feedbacks:
       success: "Your feedback was recorded ! Thanks !"
     questions:

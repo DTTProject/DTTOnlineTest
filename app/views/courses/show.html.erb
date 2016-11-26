@@ -1,0 +1,67 @@
+<div class="content course_detail">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 left_side">
+        <h5 class="text-warning">
+          <i class="fa fa-trophy" aria-hidden="true"></i>
+          <%= t "page.courses.detail.best_score"  %>
+        </h5>
+        <div class="row">
+          <%= render "best" %>
+        </div>
+      </div>
+      <div class="col-md-8 right_side">
+        <h5 class="text-success">
+          <i class="fa fa-info" aria-hidden="true"></i>
+          <%= t "page.courses.detail.title" %>
+        </h5>
+        <div class="row">
+          <div class="col-md-12">
+            <h6 class="text-strong course_name text-center text-primary"><%= @course.name %></h6>
+            <hr />
+            <ul class="infos">
+              <li class="text-success"><i class="fa fa-clock-o" aria-hidden="true"></i>
+                <%= t "page.courses.detail.infos.time" %>:
+                <%= @course.duration %> minutes
+              </li>
+              <li class="text-info">
+                <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                <%= t "page.courses.detail.infos.number_of_question" %> :
+                <%= @course.question_numbers %>
+              </li>
+              <li class="text-muted">
+                <i class="fa fa-line-chart" aria-hidden="true"></i>
+                <%= t "page.courses.detail.infos.exam_count" %> :
+                <%= @course.tests.size %>
+              </li>
+            </ul>
+            <hr />
+            <h6 class="text-primary"><%= t "page.courses.detail.infos.description" %></h6>
+            <p>
+              <%= @course.description %>
+            </p>
+            <hr />
+            <ul class="infos create_test_course">
+              <li>
+                <a href="#">
+                  <i class="fa fa-bolt" aria-hidden="true"></i>
+                  <%= t "page.courses.detail.create.real_test" %>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa fa-external-link" aria-hidden="true"></i>
+                  <%= t "page.courses.detail.create.practice" %>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br /> <hr />
+    <div class="row">
+      <%= render "comment", comments: @course.comments %>
+    </div>
+  </div>
+</div>

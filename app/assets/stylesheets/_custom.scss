@@ -265,3 +265,64 @@ li:hover > ul.drop-menu li:nth-child(4) {
   width: 50px;
   height: 50px;
 }
+
+.course_detail {
+  .container {
+    background-color: #fff;
+    padding: 2rem ;
+    border-radius: 5px;
+    .right_side {
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 0rem 2rem;
+    }
+  }
+}
+
+.text-strong {
+  font-weight: bold;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.course_name {
+  // margin-left: 3rem;
+  text-align: center;
+  font-size: 25px;
+}
+
+ul.infos {
+  li {
+    display: inline;
+    // width: 49%;
+    margin-right: 1rem;
+    // height: 20px;
+    margin-bottom: 2rem;
+  }
+}
+
+.secondary-text {
+  color: #aa66cc;
+}
+
+.create_test_course {
+  margin-top: 2rem;
+  li {
+    &:first-child {
+      a {
+        color: #CC0000;
+      }
+    }
+    &:nth-child(2) {
+      a {
+        color: #FF8800;
+      }
+    }
+    a {
+      border: 1px solid;
+      padding: 1rem;
+      border-radius: 5px;
+    }
+  }
+}
