@@ -71,6 +71,8 @@ en:
   time:
     minute: "minutes"
   page:
+    feedbacks:
+      success: "Your feedback was recorded ! Thanks !"
     questions:
       contributions:
         detail:

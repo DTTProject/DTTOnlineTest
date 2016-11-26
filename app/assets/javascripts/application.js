@@ -19,3 +19,4 @@
 //= require materialize-sprockets
 //= require_tree .
 //= require toastr
+//= require sweetalert

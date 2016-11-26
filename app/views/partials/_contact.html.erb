@@ -17,29 +17,33 @@
       <!--Body-->
       <p>Feel free to drop us a feeback</p>
       <br>
+      <%= form_for(Feedback.new, remote: true) do |f| %>
+        <!--Body-->
+        <div class="md-form">
+          <i class="fa fa-user prefix"></i>
+          <!-- <input type="text" id="form3" class="form-control"> -->
+          <%= f.text_field :name, class: "form-control" %>
+          <label for="form3">Your name</label>
+        </div>
 
-      <!--Body-->
-      <div class="md-form">
-        <i class="fa fa-user prefix"></i>
-        <input type="text" id="form3" class="form-control">
-        <label for="form3">Your name</label>
-      </div>
+        <div class="md-form">
+          <i class="fa fa-envelope prefix"></i>
+          <!-- <input type="text" id="form2" class="form-control"> -->
+          <%= f.email_field :email, class: "form-control" %>
+          <label for="form2">Your email</label>
+        </div>
 
-      <div class="md-form">
-        <i class="fa fa-envelope prefix"></i>
-        <input type="text" id="form2" class="form-control">
-        <label for="form2">Your email</label>
-      </div>
+        <div class="md-form">
+          <i class="fa fa-pencil prefix"></i>
+          <!-- <textarea type="text" id="form8" class="md-textarea"></textarea> -->
+          <%= f.text_area :content, class: "md-textarea" %>
+          <label for="form8">Content</label>
+        </div>
 
-      <div class="md-form">
-        <i class="fa fa-pencil prefix"></i>
-        <textarea type="text" id="form8" class="md-textarea"></textarea>
-        <label for="form8">Content</label>
-      </div>
-
-      <div class="text-xs-center">
-        <button class="btn btn-default">Submit</button>
-      </div>
+        <div class="text-xs-center">
+          <button class="btn btn-default" type="submit">Submit</button>
+        </div>
+      <% end %>
     </div>
   </div>
   <div class="col-md-4 col-md-offset-1">

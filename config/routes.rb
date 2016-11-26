@@ -18,4 +18,5 @@ Rails.application.routes.draw do
       get 'contributions'
     end
   end
+  resources :feedbacks
 end

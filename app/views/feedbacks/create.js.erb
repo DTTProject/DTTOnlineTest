@@ -1,0 +1,8 @@
+<% if @feedback.errors.size <= 0 %>
+  swal("Thankyou!", "Your's feedback was recorded! Thanks for your opinion...", "success");
+  $("#new_feedback")[0].reset();
+<% else %>
+  sweetAlert("Oops...", "Your feedback havent sent yet", "error");
+  var error_message = "<%= @feedback.errors.full_messages.to_sentence %>"
+  toastr["error"](error_message)
+<% end %>
