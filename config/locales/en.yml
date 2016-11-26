@@ -116,6 +116,14 @@ en:
         button: "Detail"
         short_des: "Some quick example text to build on the card title and make up the bulk of the card's content."
     admin:
+      feedbacks:
+        title: "All Feedback"
+        tables:
+          name: "Name"
+          email: "Email"
+          content: "Content"
+          status: "Status"
+          action: "Action"
       users:
         delete:
           title: "Block This User???"

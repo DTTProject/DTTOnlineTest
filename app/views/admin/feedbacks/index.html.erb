@@ -1,0 +1,21 @@
+<%= content_for :admin_header_title do %>
+  <%= t "page.admin.feedbacks.title" %>
+<% end %>
+<table class="table" id="all_feedbacks_table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th><%= t "page.admin.feedbacks.tables.name" %></th>
+      <th><%= t "page.admin.feedbacks.tables.email" %></th>
+      <th><%= t "page.admin.feedbacks.tables.content" %></th>
+      <th><%= t "page.admin.feedbacks.tables.status" %></th>
+      <th><%= t "page.admin.feedbacks.tables.action" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @feedbacks.each_with_index do |feedback, index| %>
+      <%= render "feedback", feedback: feedback, index: index %>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @feedbacks %>

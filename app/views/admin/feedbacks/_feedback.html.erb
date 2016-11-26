@@ -1,0 +1,18 @@
+<tr class="feedback_<%= feedback.id %> <%= feedback.response? ? 'inactive' : '' %>">
+  <th scope="row"><%= index %></th>
+  <td><%= feedback.name %></td>
+  <td><%= feedback.email %></td>
+  <td><%= feedback.content %></td>
+  <td class="<%= feedback.response? ? 'text-success' : 'text-warning' %>">
+    <%= feedback.response? ? 'Reponsed' : 'Pending' %>
+  </td>
+  <td>
+    <% unless feedback.response? %>
+      <a class="text-primary admin_response_email" href="mailto:someone@example.com?Subject=Hello%20again" target="_top" id="<%= feedback.id %>">
+        <i class="fa fa-reply" aria-hidden="true"></i>Response
+      </a>
+    <% else %>
+      ---
+    <% end %>
+  </td>
+</tr>

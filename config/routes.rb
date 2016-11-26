@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       end
     end
     resources :questions
+    resources :feedbacks, only: [:index, :update]
   end
   resources :questions
   resources :users do
@@ -18,5 +19,5 @@ Rails.application.routes.draw do
       get 'contributions'
     end
   end
-  resources :feedbacks
+  resources :feedbacks, only: :create
 end
