@@ -34,15 +34,17 @@
               <% end %>
             </li>
             <li>
-              <%= link_to '#' do %>
-                <%= t "page.home.nav.users.user_profile" %>
+              <%= link_to tests_path do %>
+                Your's Tests
               <% end %>
             </li>
-            <li>
-              <%= link_to '#' do %>
-                <%= t "page.home.nav.users.update_profile" %>
-              <% end %>
-            </li>
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to user_path(current_user) do %>
+                  <%= t "page.home.nav.users.user_profile" %>
+                <% end %>
+              </li>
+            <% end %>
             <li>
                <%= link_to t("devise.logout"),
           destroy_user_session_path, method: :delete %>

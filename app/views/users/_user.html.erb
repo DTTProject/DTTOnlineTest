@@ -1,0 +1,30 @@
+<div class="card testimonial-card">
+  <div class="card-up default-color-dark">
+  </div>
+
+  <!--Avatar-->
+  <div class="avatar">
+    <% if user.avatar.nil? %>
+      <%= image_tag "default_user.png", class: " rounded-circle img-responsive"%>
+    <% else %>
+      <%= image_tag user.avatar, class: "rounded-circle img-responsive"%>
+    <% end %>
+  </div>
+
+  <div class="card-block">
+    <!--Name-->
+    <h4 class="card-title">
+      <i class="fa fa-envelope-o" aria-hidden="true"></i>
+      <%= user.email %>
+    </h4>
+    <hr>
+    <a href="#" class="btn btn-default">
+      <i class="fa fa-reply" aria-hidden="true"></i>
+      Back
+    </a>
+    <a href="#" class="btn btn-warning">
+      <i class="fa fa-share" aria-hidden="true"></i>Edit
+    </a>
+  </div>
+
+</div>

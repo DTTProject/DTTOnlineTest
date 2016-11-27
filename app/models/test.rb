@@ -1,4 +1,5 @@
 class Test < ApplicationRecord
+  include CreateActivity
   belongs_to :course
   belongs_to :user
   has_many :results, dependent: :destroy
@@ -6,7 +7,7 @@ class Test < ApplicationRecord
 
   enum status: [:start, :testing, :finished]
   after_initialize :default_score
-
+  after_create :create_activity_create_test
   accepts_nested_attributes_for :results,
     reject_if: lambda {|a| a[:question_id].blank?}, allow_destroy: true
 
@@ -42,5 +43,9 @@ class Test < ApplicationRecord
 
   def default_score
     self.score ||= '0'
+  end
+
+  def create_activity_create_test
+    create_activity self.id, Settings.activity_type.create_exam, self.user.id
   end
 end

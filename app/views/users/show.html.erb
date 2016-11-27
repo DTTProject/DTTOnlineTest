@@ -1,0 +1,25 @@
+<div class="content course_detail">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 left_side">
+        <%= render "user", user: @user %>
+      </div>
+      <div class="col-md-7 right_side">
+        <table class="table" id="user_activities">
+          <thead><tr><th></th></tr></thead>
+          <tbody>
+            <% @activities.each do |act| %>
+            <tr class="card">
+              <td>
+                  <%= act.load_user.email %> just create <%= link_to "a test", tests_path, class: "text-primary" %> on <%= link_to act.load_course.name, act.load_course, class: "text-primary" %> course
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= paginate @activities %>
+      </div>
+    </div>
+  </div>
+</div>
+

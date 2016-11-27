@@ -5,3 +5,5 @@ role_user: 0
 log_directory: "log"
 MINUTE: 60
 TIME_FORMAT: "%H:%M:%S"
+activity_type:
+  create_exam: 0

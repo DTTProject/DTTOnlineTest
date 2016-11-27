@@ -5,6 +5,7 @@ $(document).on('turbolinks:load', function(){
   $('#admin_log_users').dataTable();
   $('#all_feedbacks_table').dataTable();
   $('#user_tests').dataTable();
+  $('#user_activities').dataTable();
   $('.dataTables_length').html('');
   $('.dataTables_info').remove();
   $('.dataTables_paginate').hide();

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  include LoadBestUsers
+  # include LoadBestUsers
   before_action :authenticate_user!
   before_action :load_user
 
@@ -7,6 +7,10 @@ class UsersController < ApplicationController
     @questions = @user.questions
       .page(params[:page]).per Settings.per_page
     render "questions/index"
+  end
+
+  def show
+    @activities = Activity.order_desc.page(params[:page]).per Settings.per_page
   end
 
   private
