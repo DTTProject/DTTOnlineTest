@@ -1,0 +1,41 @@
+<tr>
+  <td><%= index + 1 %></td>
+  <td><%= test.course.name %></td>
+  <td>
+    <% if test.status == "finished" %>
+      <label class="label-status text-success">
+    <% elsif test.status == "start" %>
+      <label class="label-status text-primary">
+    <% else %>
+      <label class="label-status text-warning">
+    <% end %>
+        <%= test.status %>
+      </label>
+  </td>
+  <td><%= spend_time test %></td>
+  <td>
+    <% unless test.score.nil? %>
+      <%= test.score %>
+    <% else %>
+      ---
+    <% end %>
+  </td>
+  <td>
+    <% if test.status == 'start' %>
+      <a href="<%= test_path(test)%>" class="start_test">
+        <i class="fa fa-external-link" aria-hidden="true"></i>
+        Start Test
+      </a>
+    <% elsif test.status == 'finished' %>
+      <a href="<%= test_path(test)%>" class="view_result">
+        <i class="fa fa-eye" aria-hidden="true"></i>
+        View Result
+      </a>
+    <% else %>
+      <a href="<%= test_path(test)%>" class="continute_test">
+        <i class="fa fa-level-up" aria-hidden="true"></i>
+        Continute
+      </a>
+    <% end %>
+  </td>
+</tr>

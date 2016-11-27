@@ -47,6 +47,9 @@ $(document).on('turbolinks:load', function(){
   //Margin nav fixed
   var contentPlacement = $('#header_fixed').position().top + $('#header_fixed').height();
   $('#content').css('margin-top',contentPlacement);
+
+  //blank label
+  $('.questions_answers').find('.answers').find('label').html(' ');
 });
 
 //Function handle scroll

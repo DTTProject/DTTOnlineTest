@@ -327,3 +327,195 @@ ul.infos {
   }
 }
 
+.do_test {
+  .test_container {
+    margin: 2rem;
+    padding: 2rem;
+    background-color: #fff;
+    .row {
+      &:first-child {
+        margin-bottom: 3rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding-bottom: 2rem;
+      }
+    }
+    .center_area_test {
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+
+.label-status {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+}
+
+.label-default {
+  background-color: #777777;
+}
+
+.label-success {
+  background-color: #5cb85c;
+}
+
+.label-warning {
+  background-color: #f0ad4e;
+}
+
+.label-danger {
+  background-color: #d9534f;
+}
+
+.label-primary {
+  background-color: #428bca;
+}
+
+.questions_answers {
+  .answers {
+    [type=radio]:checked + label, [type=radio]:not(:checked) + label {
+      height: 10px;
+    }
+  }
+}
+
+
+.wrap {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 310px;
+}
+
+a {
+  text-decoration: none;
+  color: #1a1a1a;
+}
+
+// Variables
+$lato: 'Lato';
+
+// Title
+h1 {
+  margin-bottom: 60px;
+  text-align: center;
+  font: 300 2.25em $lato;
+  text-transform: uppercase;
+
+  strong {
+    font-weight: 400;
+    color: #ea4c4c;
+  }
+}
+
+h2 {
+  margin-bottom: 80px;
+  text-align: center;
+  font: 300 0.7em $lato;
+  text-transform: uppercase;
+
+  strong {
+    font-weight: 400;
+  }
+}
+
+.clock_count_down {
+  margin: auto;
+  .clock {
+    border: 3px solid #f7f7f7;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+
+  }
+}
+
+.start_test, .view_result, .continute_test {
+  padding: 5px;
+  border: 1px solid;
+  border-radius: 5px;
+  i {
+    margin-right: 5px;
+  }
+}
+
+.start_test {
+  color: #33b5e5;
+}
+
+.view_result {
+  color: #00C851;
+}
+
+.continute_test {
+  color: #aa66cc
+}
+
+.detail {
+  .row {
+    .col-md-3 {
+      height: 50px;
+      border: 1px solid #f7f7f7;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .wrong_result {
+      background: red;
+    }
+    .success_result {
+      background: green
+    }
+  }
+}
+
+.wrong_result {
+  position: relative;
+}
+.wrong_result:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 50%;
+  right: 0;
+  border-top: 1px solid;
+  border-color: inherit;
+
+  -webkit-transform:rotate(-5deg);
+  -moz-transform:rotate(-5deg);
+  -ms-transform:rotate(-5deg);
+  -o-transform:rotate(-5deg);
+  transform:rotate(-45deg);
+}
+
+.collect {
+  width: 30%;
+  display:inline-block;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+label[for='test_course_id'] {
+  top: 25px !important;
+}
+
+.give_comment {
+  padding: 2rem;
+  border: 1px solid;
+  color: #00c853;
+  border-radius: 10px;
+  i {
+    margin-right: 5px;
+  }
+}

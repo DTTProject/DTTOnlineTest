@@ -4,7 +4,8 @@ class Test < ApplicationRecord
   has_many :results, dependent: :destroy
   has_many :questions, through: :results
 
-  enum status: [:start, :testing, :saving, :finished]
+  enum status: [:start, :testing, :finished]
+  after_initialize :default_score
 
   accepts_nested_attributes_for :results,
     reject_if: lambda {|a| a[:question_id].blank?}, allow_destroy: true
@@ -37,5 +38,9 @@ class Test < ApplicationRecord
 
   def create_results questions
     questions.each{ |q| Result.create({question_id: q.id, test_id: self.id}) }
+  end
+
+  def default_score
+    self.score ||= '0'
   end
 end

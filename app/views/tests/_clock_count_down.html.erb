@@ -1,0 +1,14 @@
+<h6 class="text-danger">
+  <i class="fa fa-clock-o" aria-hidden="true"></i>
+  <%= t "page.tests.do.time"  %>
+</h6>
+<div class="col m4 offset-m8 clock_count_down">
+  <p class="clock">
+    <input type="hidden" id="data_clock_init" data-hour="<%= hour %>" data-minute="<%= minute %>"
+    data-second="<%= second %>" />
+    <span class="hour"></span> :
+    <span class="minute"></span> :
+    <span class="second"></span>
+  </p>
+</div>
+

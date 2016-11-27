@@ -1,0 +1,40 @@
+<div class="card col-md-12 questions_answers" style="padding-top: 2rem">
+  <div class="card-title">
+    <label class="label-status label-default" style="display:block; font-size: 1.1em">
+      <%= t "page.tests.do.question_num"%>
+      <%= f.index + 1 %>
+    </label>
+    <p><strong><%= f.object.question.content %>?</strong></p>
+  </div>
+  <div class="card-body">
+    <div class="answers">
+      <% f.object.question.answers.each do |answer| %>
+        <%= f.hidden_field :question_id  %>
+        <% if f.object.test.finished? %>
+          <% if answer.correct? %>
+            <p class="green-text">
+          <% else %>
+            <p class="red-text">
+          <% end %>
+        <% else %>
+            <p>
+        <% end %>
+          <%= f.radio_button :answer_id, answer.id,
+            checked: answer.id == f.object.answer_id, disabled: (f.object.test.finished? ? true : false) %>
+          <%= f.label :answer_id, value: answer.id  %>
+          <span class="answer_content">
+            <%= answer.content %>
+          </span>
+        </p>
+      <% end %>
+    </div>
+    <% if f.object.test.finished? %>
+      <hr>
+      <div class="suggestion" style="color: #aa66cc">
+        <h6>Suggestion: </h6>
+        <p><%= f.object.question.suggestion %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
+

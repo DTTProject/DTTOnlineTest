@@ -1,0 +1,17 @@
+<div class="col-md-12" style="padding-top: 2rem">
+  <% @users.each_with_index do |user, key| %>
+    <div class="media">
+      <a class="media-left waves-light">
+        <img class="rounded-circle best_contribute_image_avatar" src="<%= user.avatar %>" alt="Generic placeholder image">
+      </a>
+      <div class="media-body">
+        <h4 class="media-heading">
+          <a href="#"><%= user.name%></a>
+        </h4>
+        <p>
+        Score: <%= user.score %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>

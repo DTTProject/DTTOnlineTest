@@ -71,7 +71,16 @@ en:
   time:
     minute: "minutes"
   page:
+    results:
+      left:
+        score: "Your Score"
     tests:
+      do:
+        save_fail: "Some thing went wrong!. Please try again"
+        finished_success: "You are done test!. See result and score!"
+        save_success: "Test was saved. You can go back to continute doing test!"
+        question_num: "Question Number"
+        time: "Time Count Down"
       index:
         title: "Your's Test Created"
         tables:

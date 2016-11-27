@@ -13,6 +13,14 @@ class User < ApplicationRecord
     .where.not(questions: {user_id: nil}).group('users.id')
     .order('COUNT(*) DESC').limit(5)}
 
+  scope :best_user_test, ->(course_id){joins(:tests)
+    .select("users.*, tests.score as score")
+    .where(users: {role: 0})
+    .where("tests.course_id = ?", course_id)
+    .where('tests.score =  (select MAX(score) from tests)')
+    .distinct
+  }
+
   before_create :normal_user_role
   after_create :send_email
 
