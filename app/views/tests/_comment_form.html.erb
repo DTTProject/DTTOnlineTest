@@ -1,0 +1,21 @@
+<h5 class="text-center" style="margin-bottom: 2rem">Leave Rating and Comment</h5>
+<%= form_for Comment.new do |f| %>
+  <%= f.hidden_field :food_item_id , value: @food_item.id %>
+  <div id="rating-form" class="form-group">
+    <%= f.label :rating, "Rating" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_area :body, placeholder: "Say something ....", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "Post" , class: "form-control btn btn-primary" %>
+  </div>
+<% end %>
+
+<script>
+$("#rating-form").raty({
+  path: '/assets/',
+  scoreName: 'comment[rating]'
+});
+</script>

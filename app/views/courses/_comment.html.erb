@@ -9,21 +9,15 @@
   <% comments.each do |comment| %>
     <div class="media">
         <a class="media-left waves-light">
-          <% if comment.user.avatar.thumb.url.nil? %>
+          <% if comment.user.avatar.nil? %>
             <%= image_tag "default_uer.png", class: "rounded-circle", alt: "Default User Avatar" %>
           <% else %>
-            <%= image_tag comment.user.avatar.thumb.url, class: "rounded-circle", alt: "User Avatar" %>
+            <%= image_tag comment.user.avatar, class: "rounded-circle user_comment_avatar", alt: "User Avatar" %>
           <% end %>
         </a>
         <div class="media-body">
             <h4 class="media-heading"><%= comment.user.name %></h4>
-            <ul class="rating inline-ul">
-                <li><i class="fa fa-star amber-text"></i></li>
-                <li><i class="fa fa-star amber-text"></i></li>
-                <li><i class="fa fa-star amber-text"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-            </ul>
+            <div class="review-rating" data-score="<%= comment.rating %>"></div>
             <p>
               <%= comment.content %>
             </p>
@@ -31,3 +25,24 @@
     </div>
   <% end %>
 </div>
+
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function(){
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+
+  });
+</script>
+<script>
+    $('.average_rating').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function(){
+      return $(this).attr('data-score');
+    }
+
+  });
+</script>

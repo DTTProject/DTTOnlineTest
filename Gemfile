@@ -67,3 +67,4 @@ gem 'cancancan'
 gem 'jquery-datatables-rails', '~> 3.4.0'
 gem "paranoia", "~> 2.2"
 gem 'sweetalert-rails'
+gem 'ratyrate'
