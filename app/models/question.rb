@@ -19,4 +19,5 @@ class Question < ApplicationRecord
   def reject_answers (attributes)
     attributes['content'].blank?
   end
+
 end

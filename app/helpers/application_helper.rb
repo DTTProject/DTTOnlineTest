@@ -53,5 +53,13 @@ module ApplicationHelper
     end
     html_string.html_safe
   end
+
+  def spend_time exam
+    time = exam.subject.duration * Settings.MINUTE
+    if exam.end_time - exam.start_time <= exam.subject.duration * Settings.MINUTE
+      time = exam.end_time.to_i - exam.start_time.to_i
+    end
+    Time.at(time).utc.strftime Settings.TIME_FORMAT
+  end
 end
 

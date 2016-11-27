@@ -17,10 +17,14 @@ namespace :db do
     puts "Creating question"
     Course.all.each do |course|
       course.question_numbers.size.times do
-        Fabricate :question, course_id: course.id, status: 1
+        Fabricate :question, course_id: course.id, status: 0
       end
     end
-
+    Course.all.each do |course|
+      course.question_numbers.size.times do
+        Fabricate :question, course_id: course.id, status: 0
+      end
+    end
     puts "Creating users"
     user_hash = {
       "User 1": "user.1",
@@ -34,8 +38,8 @@ namespace :db do
 
     puts "Create contribute question for user"
     User.where.not(role: 1).each do |user|
-      Faker::Number.between(3,6).times do
-        Fabricate :question, user_id: user.id, status: 0, course_id: Course.ids.sample
+      Faker::Number.between(5,10).times do
+        Fabricate :question, user_id: user.id, course_id: Course.ids.sample
       end
     end
 

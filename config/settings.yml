@@ -3,3 +3,5 @@ per_page: 5
 default_email: ndt8895@gmail.com
 role_user: 0
 log_directory: "log"
+MINUTE: 60
+TIME_FORMAT: "%H:%M:%S"

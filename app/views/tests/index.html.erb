@@ -1,0 +1,76 @@
+<div class="content course_detail">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h5 class="text-warning">
+          <i class="fa fa-trophy" aria-hidden="true"></i>
+          <%= t "page.courses.detail.best_score"  %>
+        </h5>
+        <div class="row">
+          Best Here
+        </div>
+      </div>
+      <div class="col-md-8 right_side">
+        <h5 class="text-success">
+          <i class="fa fa-info" aria-hidden="true"></i>
+          <%= t "page.tests.index.title" %>
+        </h5>
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table" id="user_tests">
+              <thead>
+                <tr>
+                  <th data-field="stt">
+                    <%= t "page.tests.index.tables.stt" %>
+                  </th>
+                  <th data-field="course">
+                    <%= t "page.tests.index.tables.course" %>
+                  </th>
+                  <th data-field="status">
+                    <%= t "page.tests.index.tables.status" %>
+                  </th>
+                  <th data-field="spent_time">
+                    <%= t "page.tests.index.tables.spend_time" %>
+                  </th>
+                  <th data-field="score">
+                    <%= t "page.tests.index.tables.spend_time" %>
+                  </th>
+                  <th data-field="action" class="center-align">
+                    <%= t "page.tests.index.tables.action" %>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @tests.each_with_index do |test, index| %>
+                  <tr>
+                    <td><%= index + 1 %></td>
+                    <td><%= test.course.name %></td>
+                    <td>
+                      <% if test.status == "saving" %>
+                        <label class="label-status text-danger">
+                      <% elsif test.status == "finished" %>
+                        <label class="label-status text-success">
+                      <% elsif test.status == "start" %>
+                        <label class="label-status text-primary">
+                      <% else %>
+                        <label class="label-status text-warning">
+                      <% end %>
+                        <%= test.status %>
+                      </label>
+                    </td>
+                    <td></td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <%= paginate @tests %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

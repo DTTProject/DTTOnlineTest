@@ -1,0 +1,65 @@
+<%= form_for Test.new do |f| %>
+  <%= f.hidden_field  :course_id, value: course.id %>
+  <%= f.hidden_field  :status, value: :start %>
+  <ul class="infos create_test_course">
+    <li>
+      <a href="#">
+        <i class="fa fa-bolt" aria-hidden="true"></i>
+        <%= t "page.courses.detail.create.real_test" %>
+      </a>
+    </li>
+    <li>
+      <a href="#" data-remote="true" data-toggle="modal" data-target="#modal_create">
+        <i class="fa fa-external-link" aria-hidden="true"></i>
+        <%= t "page.courses.detail.create.practice" %>
+      </a>
+    </li>
+  </ul>
+
+  <div class="modal fade" id="modal_create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                  <%= t "page.courses.detail.create.choose_complexity"%>
+                </h4>
+                <small>
+                  <%= t "page.courses.detail.create.description"%>
+                </small>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+              <fieldset class="form-group">
+                <input name="test_complexity" type="radio" id="radio11" value="0">
+                <label for="radio11">Difficult</label>
+              </fieldset>
+
+              <fieldset class="form-group">
+                <input name="test_complexity" type="radio" id="radio21" value="1">
+                <label for="radio21">Normal</label>
+              </fieldset>
+
+              <fieldset class="form-group">
+                <input name="test_complexity" type="radio" id="radio31" value="3">
+                <label for="radio31">Easy</label>
+              </fieldset>
+              <fieldset class="form-group">
+                <input name="test_complexity" type="radio" id="random" value="Random" checked="checked">
+                <label for="random">Random</label>
+              </fieldset>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+  </div>
+<% end %>

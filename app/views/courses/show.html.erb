@@ -41,20 +41,7 @@
               <%= @course.description %>
             </p>
             <hr />
-            <ul class="infos create_test_course">
-              <li>
-                <a href="#">
-                  <i class="fa fa-bolt" aria-hidden="true"></i>
-                  <%= t "page.courses.detail.create.real_test" %>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fa fa-external-link" aria-hidden="true"></i>
-                  <%= t "page.courses.detail.create.practice" %>
-                </a>
-              </li>
-            </ul>
+            <%= render "create_test", course: @course %>
           </div>
         </div>
       </div>

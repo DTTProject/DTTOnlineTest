@@ -71,6 +71,16 @@ en:
   time:
     minute: "minutes"
   page:
+    tests:
+      index:
+        title: "Your's Test Created"
+        tables:
+          stt: "No."
+          course: "Course"
+          status: "Status"
+          spend_time: "Spent Time"
+          score: "Score"
+          action: "Action"
     courses:
       detail:
         infos:
@@ -79,7 +89,11 @@ en:
           exam_count: "Total exams"
           description: "Description"
         create:
-          real_test: "Create Exam"
+          success: "Test was created successfully!!!"
+          choose_complexity: "Choose Complexity"
+          description: "Please choose complexity for your test. If not, we will
+                        random base 20% difficult, 30% easy, and 50% normal questions"
+          real_test: "Learning"
           practice: "Create Practice Test"
         best_score: "Best Score"
         title: "Course Information"

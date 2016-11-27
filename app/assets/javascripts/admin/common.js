@@ -4,6 +4,7 @@ $(document).on('turbolinks:load', function(){
   $('#admin_contribution_questions').dataTable();
   $('#admin_log_users').dataTable();
   $('#all_feedbacks_table').dataTable();
+  $('#user_tests').dataTable();
   $('.dataTables_length').html('');
   $('.dataTables_info').remove();
   $('.dataTables_paginate').hide();
