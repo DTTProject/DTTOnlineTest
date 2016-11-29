@@ -1,9 +1,10 @@
 class Test < ApplicationRecord
   include CreateActivity
-  belongs_to :course
+  belongs_to :week
   belongs_to :user
   has_many :results, dependent: :destroy
   has_many :questions, through: :results
+  has_many :notes
 
   enum status: [:start, :testing, :finished]
   after_initialize :default_score
@@ -16,14 +17,14 @@ class Test < ApplicationRecord
     # We create test real test with 50% normal questions, 30% easy questions,
     # and 20% difficult questions
     # Step 1: Get random question
-    questions = self.course.questions.where("questions.status =  ?", 0)
+    questions = self.week.questions.where("questions.status =  ?", 0)
       .where("questions.complexity = ?", 0).shuffle
-      .take (course.question_numbers * 0.2).floor
-    questions += self.course.questions.where("questions.status =  ?", 0)
+      .take (week.course.question_numbers * 0.2).floor
+    questions += self.week.course.questions.where("questions.status =  ?", 0)
       .where("questions.complexity = ?", 2).shuffle
-      .take (course.question_numbers * 0.3).floor
-    number_difficults = self.course.question_numbers -  questions.size
-    questions += self.course.questions.where("questions.status =  ?", 0)
+      .take (week.course.question_numbers * 0.3).floor
+    number_difficults = self.week.course.question_numbers -  questions.size
+    questions += self.week.questions.where("questions.status =  ?", 0)
       .where("questions.complexity = ?", 2).shuffle
       .take number_difficults
     # Create result for each question
@@ -31,9 +32,9 @@ class Test < ApplicationRecord
   end
 
   def create_results_with_complexity complexity
-    questions = self.course.questions.where("questions.status =  ?", 0)
+    questions = self.week.questions.where("questions.status =  ?", 0)
       .where("questions.complexity = ?", complexity.to_i).shuffle
-      .take course.question_numbers
+      .take self.week.course.question_numbers
     create_results questions
   end
 

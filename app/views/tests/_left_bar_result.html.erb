@@ -12,7 +12,7 @@
           <!--Card image-->
           <div class="view overlay hm-white-slight">
               <!-- <img src="http://mdbootstrap.com/images/reg/reg%20(2).jpg" class="img-fluid" alt=""> -->
-              <%= image_tag "passed.png", class: "img-fluild" %>
+              <%= image_tag "win.jpg", class: "img-fluild" %>
               <a href="#">
                   <div class="mask"></div>
               </a>
@@ -29,7 +29,7 @@
           <!--Card image-->
           <div class="view overlay hm-white-slight">
               <!-- <img src="http://mdbootstrap.com/images/reg/reg%20(2).jpg" class="img-fluid" alt=""> -->
-              <%= image_tag "keep-calm-and-try-again-later.png", class: "img-fluild" %>
+              <%= image_tag "fail.jpg", class: "img-fluild" %>
               <a href="#">
                   <div class="mask"></div>
               </a>
@@ -77,7 +77,7 @@
             </div>
             <!--Body-->
             <div class="modal-body">
-                <%= f.hidden_field :course_id , value: test.course.id %>
+                <%= f.hidden_field :course_id , value: test.week.course.id %>
                 <div id="rating-form" class="md-form">
                   <%= f.label :rating, "Rating" %>
                 </div>

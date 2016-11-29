@@ -19,6 +19,7 @@
         </h5>
         <div class="question_all">
           <h6>You have <%= @questions.total_count %> contributions.  </h6>
+          <a class="btn-floating btn-large blue" href="<%= new_question_path %>"><i class="fa fa-plus"></i></a>
           <table class="table" id="questions_contributed">
             <thead>
               <tr>
@@ -37,8 +38,8 @@
             <tbody>
               <% @questions.each_with_index do |question, index| %>
                 <tr class="<%= question.rejected? ? 'inactive' : '' %>">
-                  <th scope="row"><%= index %></th>
-                  <td><%= question.content%></td>
+                  <th scope="row"><%= index + 1 %></th>
+                  <td><%= question.content.try(:html_safe)%></td>
                   <td class="<%= question.accepted? ? 'text-success' : (question.pending? ? 'text-warning' : 'text-danger') %>">
                     <%= question.status %>
                   </td>

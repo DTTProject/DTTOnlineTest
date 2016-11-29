@@ -311,12 +311,17 @@ ul.infos {
   li {
     &:first-child {
       a {
-        color: #CC0000;
+        color: #64dd17;
       }
     }
     &:nth-child(2) {
       a {
         color: #FF8800;
+      }
+    }
+    &:nth-child(3) {
+      a {
+        color: #37474F;
       }
     }
     a {
@@ -523,4 +528,49 @@ label[for='test_course_id'] {
 .user_comment_avatar {
   height: 100px;
   margin-right:2rem;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.select_none_border {
+  border: none;
+}
+
+.btn-gray {
+  background-color: #f7f7f7 !important;
+  color: #000 !important;
+}
+
+.notes {
+  margin-top: 2rem;
+  margin-left: 5px;
+  ul {
+    list-style-type: square !important;
+    margin-left: 5px;
+    li {
+      list-style-type: square !important;
+    }
+  }
+}
+
+.course_detail {
+  .container-fluid {
+    background-color: #fff;
+    margin: 1rem;
+    padding: 2rem;
+    border-radius: 10px;
+    .col-md-3 {
+      .list_notes {
+        list-style-type: square !important;
+        li {
+          list-style-type: square !important;
+        }
+      }
+    }
+    .col-md-9 {
+      border-left: 1px solid #f7f7f7;
+    }
+  }
 }

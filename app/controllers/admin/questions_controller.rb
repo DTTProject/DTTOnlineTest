@@ -10,7 +10,7 @@ class Admin::QuestionsController < ApplicationController
         .page(params[:page]).per Settings.per_page
       render "admin/questions/contributions"
     else
-      @questions = Question.includes(:course).order_desc
+      @questions = Question.not_contribution.includes(:course).order_desc
         .page(params[:page]).per Settings.per_page
     end
   end
@@ -95,11 +95,28 @@ class Admin::QuestionsController < ApplicationController
     end
   end
 
+  def load_weeks
+    @course = Course.find_by id: params[:course_id]
+    respond_to do |format|
+      format.json do
+        render json: {
+          content: render_to_string({
+            partial: "admin/questions/weeks_select",
+            locals: {weeks: @course.weeks},
+            formats: "html",
+            layout: false
+          })
+        }, status: :ok
+      end
+    end
+  end
+
   private
   def question_params
     params.require(:question). permit(
       :id, :status,
       :course_id, :content,
+      :week_id,
       :suggestion, :complexity,
       answers_attributes: [:id, :content, :correct, :question_id, :_destroy]
     )

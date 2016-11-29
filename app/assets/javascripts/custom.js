@@ -1,7 +1,11 @@
-
 $(document).on('turbolinks:load', function(){
+  //Save note
+  //Popover
+  $('[data-toggle="popover"]').popover({
+    html: true
+  });
   //Select materialize initial
-    $('.mdb-select').material_select();
+  $('body').find('.mdb-select').material_select();
   //Create animation
   $('.carousel-button').hover(function(){
     $(this).addClass('animated');

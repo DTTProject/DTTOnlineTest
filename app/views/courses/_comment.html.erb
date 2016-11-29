@@ -10,7 +10,7 @@
     <div class="media">
         <a class="media-left waves-light">
           <% if comment.user.avatar.nil? %>
-            <%= image_tag "default_uer.png", class: "rounded-circle", alt: "Default User Avatar" %>
+            <%= image_tag "default_user.png", class: "rounded-circle", alt: "Default User Avatar" %>
           <% else %>
             <%= image_tag comment.user.avatar, class: "rounded-circle user_comment_avatar", alt: "User Avatar" %>
           <% end %>

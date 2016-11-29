@@ -4,7 +4,25 @@
       <%= t "page.tests.do.question_num"%>
       <%= f.index + 1 %>
     </label>
-    <p><strong><%= f.object.question.content %>?</strong></p>
+    <div class="question" id="question_<%= f.index %>">
+
+    </div>
+    <script>
+      quill[<%= f.index %>]  =  new Quill("#question_<%= f.index %>",{
+        modules: {
+          toolbar: [
+            ['bold', 'italic'],
+            ['link', 'blockquote', 'code-block', 'image'],
+            [{ list: 'ordered' }, { list: 'bullet' }]
+          ]
+        },
+        placeholder: 'Write content here...',
+        theme: 'snow'
+      });
+      quill[<%= f.index %>].setContents(<%= raw(f.object.question.content) %>);
+      quill[<%= f.index %>].enable(false);
+      $('.ql-toolbar').hide();
+    </script>
   </div>
   <div class="card-body">
     <div class="answers">
@@ -32,8 +50,29 @@
       <hr>
       <div class="suggestion" style="color: #aa66cc">
         <h6>Suggestion: </h6>
-        <p><%= f.object.question.suggestion %></p>
+        <div class="suggestion_question" id="suggestion_question_<%= f.index %>"></div>
+         <script>
+            quill1[<%= f.index %>]  =  new Quill("#suggestion_question_<%= f.index %>",{
+              modules: {
+                toolbar: [
+                  ['bold', 'italic'],
+                  ['link', 'blockquote', 'code-block', 'image'],
+                  [{ list: 'ordered' }, { list: 'bullet' }]
+                ]
+              },
+              placeholder: '',
+              theme: 'snow'
+            });
+            quill1[<%= f.index %>].setContents(<%= raw(f.object.question.suggestion) %>);
+            quill1[<%= f.index %>].enable(false);
+            $('.ql-toolbar').hide();
+            $('.suggestion_question').css('border', 'none');
+          </script>
+
       </div>
+      <a class="pull-right pop_new_note" data-toggle="popover" title="Add Note" data-placement="top" data-content="#"  data-remote="true" href="<%= new_note_path(test_id: f.object.test.id) %>">
+      <i class="fa fa-sticky-note-o" aria-hidden="true"></i>
+      Add Note </a>
     <% end %>
   </div>
 </div>

@@ -1,0 +1,4 @@
+<%= label :question, :week_id%>
+<%= select :question, :week_id,
+  weeks.collect {|week, index| ["Week #{index}", week.id ]},
+  {}, {class: "form-control colorful-select dropdown-primary"} %>

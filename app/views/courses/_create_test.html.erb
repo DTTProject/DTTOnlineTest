@@ -1,10 +1,10 @@
-<%= form_for Test.new do |f| %>
-  <%= f.hidden_field  :course_id, value: course.id %>
+<%= form_for [_week, Test.new] do |f| %>
+  <%= f.hidden_field  :week_id, value: _week.id %>
   <%= f.hidden_field  :status, value: :start %>
   <ul class="infos create_test_course">
     <li>
-      <a href="#">
-        <i class="fa fa-bolt" aria-hidden="true"></i>
+      <a href="http://learning.codeschool.vn">
+        <i class="fa fa-book" aria-hidden="true"></i>
         <%= t "page.courses.detail.create.real_test" %>
       </a>
     </li>
@@ -12,6 +12,12 @@
       <a href="#" data-remote="true" data-toggle="modal" data-target="#modal_create">
         <i class="fa fa-external-link" aria-hidden="true"></i>
         <%= t "page.courses.detail.create.practice" %>
+      </a>
+    </li>
+    <li>
+      <a href="<%= week_tests_path(_week) %>">
+        <i class="fa fa-paper-plane" aria-hidden="true"></i>
+        Tests Created
       </a>
     </li>
   </ul>

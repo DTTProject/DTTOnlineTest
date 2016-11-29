@@ -26,8 +26,32 @@
     </main>
     <!--/Main layout-->
     <%= render "admin/partials/footer" %>
-    <script src="//cdn.quilljs.com/1.1.5/quill.min.js"></script>
     <%= render "partials/modal_login" %>
+    <script>
+      var quill = new Quill('#editor-container', {
+    modules: {
+      toolbar: [
+        ['bold', 'italic'],
+        ['link', 'blockquote', 'code-block', 'image'],
+        [{ list: 'ordered' }, { list: 'bullet' }]
+      ]
+    },
+    placeholder: 'Write content here...',
+    theme: 'snow'
+  });
+
+  var quill1 = new Quill('#editor-container-1', {
+    modules: {
+      toolbar: [
+        ['bold', 'italic'],
+        ['link', 'blockquote', 'code-block', 'image'],
+        [{ list: 'ordered' }, { list: 'bullet' }]
+      ]
+    },
+    placeholder: 'Suggestion for question ...',
+    theme: 'snow'
+  });
+    </script>
   </body>
 </html>
 

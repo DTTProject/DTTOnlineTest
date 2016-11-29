@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :questions, dependent: :destroy
   has_many :tests, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :notes, dependent: :destroy
 
   enum role: [:user, :admin]
 
@@ -14,10 +15,10 @@ class User < ApplicationRecord
     .where.not(questions: {user_id: nil}).group('users.id')
     .order('COUNT(*) DESC').limit(5)}
 
-  scope :best_user_test, ->(course_id){joins(:tests)
+  scope :best_user_test, ->(week_id){joins(:tests)
     .select("users.*, tests.score as score")
     .where(users: {role: 0})
-    .where("tests.course_id = ?", course_id)
+    .where("tests.week_id = ?", week_id)
     .where('tests.score =  (select MAX(score) from tests)')
     .distinct
   }

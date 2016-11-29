@@ -5,12 +5,25 @@
       {}, {class: "mdb-select colorful-select dropdown-primary"} %>
   <%= f.label :course_id %>
 </div>
-
-<div class="md-form">
-  <%= f.text_area :content, class: "md-textarea" %>
-  <label for="">
+<label for="">
     <%= t "page.admin.questions.new.question_information.content" %>
   </label>
+<div class="md-form">
+  <%= f.hidden_field :content, class: "md-textarea" %>
+  <div id="editor-container"></div>
+  <script>
+    var quill = new Quill('#editor-container', {
+    modules: {
+      toolbar: [
+        ['bold', 'italic'],
+        ['link', 'blockquote', 'code-block', 'image'],
+        [{ list: 'ordered' }, { list: 'bullet' }]
+      ]
+    },
+    placeholder: 'Write content here...',
+    theme: 'snow'
+  });
+  </script>
 </div>
 <div class="switch">
   <label>
@@ -20,7 +33,21 @@
   </label>
 </div>
 <div class="md-form <%= (!question.suggestion.nil? && question.suggestion.length > 0 ) ? '' : 'hidden-xs-up' %> suggestion_area">
-  <%= f.text_area :suggestion, class: "md-textarea" %>
+  <%= f.hidden_field :suggestion, class: "md-textarea" %>
+  <div id="editor-container-1"></div>
+  <script>
+    var quill1 = new Quill('#editor-container-1', {
+    modules: {
+      toolbar: [
+        ['bold', 'italic'],
+        ['link', 'blockquote', 'code-block', 'image'],
+        [{ list: 'ordered' }, { list: 'bullet' }]
+      ]
+    },
+    placeholder: 'Write content here...',
+    theme: 'snow'
+  });
+  </script>
 </div>
 
 <br/>

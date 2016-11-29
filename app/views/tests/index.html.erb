@@ -1,27 +1,27 @@
 <div class="content course_detail">
-  <div class="container">
+  <div class="<%= params[:week_id] ? 'container-fluid' : 'container' %>">
     <div class="row">
       <div class="col-md-12 ">
-        <h5 class="text-success">
-          <i class="fa fa-info" aria-hidden="true"></i>
-          <%= t "page.tests.index.title" %>
-        </h5>
         <div class="row">
-          <div class="col-md-12">
-            <%= form_for Test.new do |f| %>
-              <div class="collect">
-                <%= f.select :course_id,
-                  @courses.collect {|course| [course.name, course.id ]},
-                  {}, {class: "mdb-select colorful-select dropdown-primary"} %>
-                <%= f.label :course_id %>
-                <%= f.hidden_field :status, value: :start %>
-                <%= f.hidden_field :user_id, value: current_user.id %>
-              </div>
-              <%= submit_tag "Create Test",
-                class: "btn btn-md btn-primary pink" %>
-            <% end %>
-          </div>
-          <div class="col-md-12">
+          <% if params[:week_id] %>
+            <div class="col-md-3">
+              <h5 class="text-primary"><i class="fa fa-sticky-note-o" aria-hidden="true"></i> Notes</h5>
+              <hr>
+              <ul class="list_notes">
+                <% @week.notes.each do |note| %>
+                  <li><%= note.content %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="<%= params[:week_id] ? 'col-md-9' : 'col-md-12' %>">
+            <h5 class="text-success">
+              <i class="fa fa-info" aria-hidden="true"></i>
+              <%= t "page.tests.index.title" %>
+              <% if params[:week_id] %>
+              in week: <%= @week.content %>
+              <% end %>
+            </h5>
             <table class="table" id="user_tests">
               <thead>
                 <tr>
