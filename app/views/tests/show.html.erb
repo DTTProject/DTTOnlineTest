@@ -3,7 +3,11 @@
     <div class="row">
       <div class="col-md-12">
         <h3 class="text-center text-strong">
-          Doing Test
+          <% if @test.start? || @test.testing? %>
+            Doing Test
+          <% else %>
+            Result
+          <% end %>
         </h3>
       </div>
     </div>
@@ -16,7 +20,10 @@
         <% end %>
       </div>
       <div class="col-md-6 center_area_test">
-
+          <script>
+            var quill = []
+            var quill1 = []
+          </script>
           <%= form_for @test do |f| %>
             <%= f.fields_for :results do |result| %>
               <%= render "question", f: result %>
@@ -42,7 +49,16 @@
         <div class="row">
           <%= render "best_score" %>
         </div>
+        <div class="row notes">
+          <h6 class="text-primary"><i class="fa fa-sticky-note-o" aria-hidden="true"></i> Notes</h6>
+          <hr>
+          <ul class="list_notes">
+            <% @test.notes.each do |note| %>
+              <li><%= note.content %></li>
+            <% end %>
+          </ul>
       </div>
     </div>
   </div>
 </div>
+<%= render "notes/form", test: @test %>

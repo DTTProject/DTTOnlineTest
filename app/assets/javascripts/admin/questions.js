@@ -65,7 +65,53 @@ $(document).on('turbolinks:load', function(){
         // toastr[]
       }
     })
-  })
+  });
+
+  $('#question_course_id').on('change', function(){
+    var course_id = $(this).val();
+    $.ajax({
+      url: '/admin/questions/load_weeks',
+      method: 'POST',
+      dataType: 'JSON',
+      data: {course_id: course_id},
+      success: function(result){
+        $('.weeks_choosen').html(result.content);
+      }
+    })
+  });
+  //Quill editor add question
+  $('#new_question').on('submit', function(e){
+    e.preventDefault();
+    var value = $('#editor-container').find('.ql-editor').html();
+    $(this).find('#question_content').val(value);
+    var value1 = $('#editor-container-1').find('.ql-editor').html();
+    $(this).find('#question_suggestion').val(value1);
+    var url = $(this).attr('action');
+    var data =  $(this).serialize();
+    $.ajax({
+      url: url,
+      dataType: 'JSON',
+      method: 'POST',
+      data: data,
+      cache: false,
+      success: function(result){
+        if(result.id == 2 ) {
+
+          window.location.replace('/admin/questions')
+        }else {
+          window.location.replace('/questions')
+        }
+      },
+      error: function(xhr){
+        errors = $.parseJSON(xhr.responseText).errors;
+        for(var key in errors) {
+          console.log(key + errors[key]);
+          toastr["error"](key + ' ' + errors[key]);
+        }
+        $('#new_question').find("input[type='submit']").removeAttr('disabled');
+      }
+    })
+  });
 });
 
 // $(document).ready(function(){

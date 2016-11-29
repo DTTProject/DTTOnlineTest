@@ -1,16 +1,19 @@
 <%= f.hidden_field :status, value: :accepted %>
 <div class="md-form">
-  <%= f.select :course_id,
+  <%= select :question, :course_id,
       @courses.collect {|course| [course.name, course.id ]},
       {}, {class: "mdb-select colorful-select dropdown-primary"} %>
-  <%= f.label :course_id %>
+  <%= label :question, :course_id %>
 </div>
-
-<div class="md-form">
-  <%= f.text_area :content, class: "md-textarea" %>
-  <label for="">
+<div class="form-group weeks_choosen">
+</div>
+<label for="" style="">
     <%= t "page.admin.questions.new.question_information.content" %>
-  </label>
+</label>
+<div class="md-form">
+  <%= f.hidden_field :content, class: "md-textarea" %>
+  <div id="editor-container">
+  </div>
 </div>
 <div class="switch">
   <label>
@@ -21,7 +24,9 @@
   </label>
 </div>
 <div class="md-form <%= (!question.suggestion.nil? && question.suggestion.length > 0 ) ? '' : 'hidden-xs-up' %> suggestion_area">
-  <%= f.text_area :suggestion, class: "md-textarea" %>
+  <%= f.hidden_field :suggestion, class: "md-textarea" %>
+  <div id="editor-container-1">
+  </div>
 </div>
 
 <br/>
@@ -32,3 +37,5 @@
       {}, {class: "mdb-select colorful-select dropdown-primary"} %>
   <%= f.label :course_id %>
 </div>
+
+

@@ -34,7 +34,7 @@
               <!--Title-->
               <h4 class="card-title"><%= course.name %></h4>
               <!--Text-->
-              <p class="card-text"><%= course.description %></p>
+              <p class="card-text"><%= truncate(course.description, length: 50) %></p>
               <a href="<%= course_path(course) %>" class="btn btn-primary"><%= t "page.home.courses.button" %></a>
             </div>
             <!--/.Card content-->

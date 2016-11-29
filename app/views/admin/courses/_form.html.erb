@@ -26,7 +26,25 @@
   <%= image_tag f.object.image.thumb.url %>
   <% end %>
 </div>
-
+<div class="field">
+  <div class="col-md-12">
+      <div class="card">
+        <h5 class="card-header primary-color white-text">
+          <%= t "page.admin.answers.title" %>
+        </h5>
+        <div class="card-block">
+          <%= f.fields_for :weeks do |week| %>
+            <%= render 'week_fields', f: week %>
+          <% end %>
+        </div>
+        <div class="card-footer">
+          <br/>
+          <%= link_to_add_fields t("page.admin.courses.add_week"),
+        f, :weeks %>
+        </div>
+      </div>
+    </div>
+</div>
 <div class="actions">
   <button type="submit" name="commit" class="btn btn-primary submit_edit_course">
     <%= t "courses.submit" %>

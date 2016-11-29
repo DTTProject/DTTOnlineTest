@@ -51,6 +51,11 @@ class Admin::CoursesController < ApplicationController
     end
 
     def course_params
-      params.require(:course).permit(:name, :description, :question_numbers, :duration, :image)
+      params.require(:course).permit(
+        :name, :description,
+        :question_numbers,
+        :duration, :image,
+        weeks_attributes: [:id, :course_id, :content, :description, :_destroy]
+      )
     end
 end

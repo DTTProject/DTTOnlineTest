@@ -10,7 +10,11 @@ Rails.application.routes.draw do
         get 'log'
       end
     end
-    resources :questions
+    resources :questions do
+      collection do
+        post 'load_weeks'
+      end
+    end
     resources :feedbacks, only: [:index, :update]
   end
   resources :questions
@@ -23,4 +27,8 @@ Rails.application.routes.draw do
   resources :courses, only: :show
   resources :tests
   resources :comments, only: :create
+  resources :weeks do
+    resources :tests
+  end
+  resources :notes
 end

@@ -5,7 +5,7 @@
   <tr>
     <th><%= t "page.questions.contributions.detail.content" %></th>
     <td>
-      <%= question.content %>
+      <%= question.content.try(:html_safe) %>
     </td>
   </tr>
   <tr>

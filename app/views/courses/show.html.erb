@@ -2,22 +2,14 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4 left_side">
-        <h5 class="text-warning">
-          <i class="fa fa-trophy" aria-hidden="true"></i>
-          <%= t "page.courses.detail.best_score"  %>
-        </h5>
-        <div class="row">
-          <%= render "tests/best_score" %>
-        </div>
-      </div>
-      <div class="col-md-8 right_side">
         <h5 class="text-success">
           <i class="fa fa-info" aria-hidden="true"></i>
           <%= t "page.courses.detail.title" %>
         </h5>
         <div class="row">
           <div class="col-md-12">
-            <h6 class="text-strong course_name text-center text-primary"><%= @course.name %></h6>
+            <hr>
+            <h6 class="text-strong course_name text-center text-primary" style="margin-top: 2rem"><%= @course.name %></h6>
             <hr />
             <ul class="infos">
               <li class="text-success"><i class="fa fa-clock-o" aria-hidden="true"></i>
@@ -41,8 +33,17 @@
               <%= @course.description %>
             </p>
             <hr />
-            <%= render "create_test", course: @course %>
           </div>
+        </div>
+      </div>
+      <div class="col-md-8 right_side">
+        <h5 class="text-warning" style="margin-bottom: 2rem">
+          <i class="fa fa-bookmark" aria-hidden="true"></i>
+          <%= t "page.courses.detail.process"  %>
+        </h5>
+        <hr>
+        <div class="row">
+          <%= render "list_weeks", weeks: @course.weeks %>
         </div>
       </div>
     </div>

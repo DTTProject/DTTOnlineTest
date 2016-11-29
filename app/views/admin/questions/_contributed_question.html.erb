@@ -1,6 +1,6 @@
 <tr class="question_<%= question.id %> <%= question.rejected? ? 'inactive' : '' %>">
   <th scope="row"><%= index + 1 %></th>
-  <td><%= question.content %></td>
+  <td><%= question.content.try(:html_safe) %></td>
   <td><%= question.course.name %></td>
   <td><%= question.complexity %></td>
   <td class="<%= question.accepted? ? 'text-success' : (question.pending? ? 'text-warning' : 'text-danger')%>">

@@ -38,7 +38,8 @@ en:
         button: "Go To Test"
     footer:
       about-us: "About Us"
-      about-coderschool: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit nihil, excepturi debitis repellendus sapiente assumenda nesciunt! Odit iure modi delectus rem pariatur sit eos voluptatum eius, cumque libero saepe perferendis?"
+      about-coderschool: "We offer classes for free to attract the best developers and to offer everyone fair access to education. We want to build the best engineering ecosystem in Ho Chi Minh City. We will always try to offer classes that are free to talented engineers.
+                        Our classes are funded by sponsorship from top tier engineering companies. Successful graduates may be told about jobs at these companies, where coderschool.vn may make a small bonus. This is completely optional - feel free to take our classes even if you currently love your job! We put education and quality first at CoderSchool."
       find_our_more: "Find Our More"
       links:
         link1: "Coderschool Website"
@@ -46,7 +47,7 @@ en:
         link3: "Twitter"
         link4: "Gmail"
     navbar:
-      brand: "Coderschool Entrance Test"
+      brand: "Coderschool Quizzes Online"
       home: "Home"
       login: "LogIn"
       signup: "SignUp"
@@ -102,9 +103,10 @@ en:
           choose_complexity: "Choose Complexity"
           description: "Please choose complexity for your test. If not, we will
                         random base 20% difficult, 30% easy, and 50% normal questions"
-          real_test: "Learning"
+          real_test: "Lecture"
           practice: "Create Practice Test"
         best_score: "Best Score"
+        process: "Process Timeline"
         title: "Course Information"
     feedbacks:
       success: "Your feedback was recorded ! Thanks !"
@@ -171,6 +173,7 @@ en:
             action: "Action"
         log: "Log Users Login To System"
       courses:
+        add_week: "Add Week"
         header_title: "Courses"
         create:
           success: "Course created successfully!!!"

@@ -4,7 +4,7 @@ class Activity < ApplicationRecord
 
   def load_course
     test = Test.find_by id: self.target_id
-    test.course
+    test.week.course
   end
 
   def load_user

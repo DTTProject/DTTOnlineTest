@@ -64,10 +64,10 @@ class QuestionsController < ApplicationController
   private
   def question_params
     params.require(:question). permit(
-      :id, :status, :user_id,
+      :id, :status, :user_id, :week_id,
       :course_id, :content,
       :suggestion, :complexity,
-      answers_attributes: [:id, :content, :correct, :question_id, :_destroy]
+      answers_attributes: [:id, :content, :correct, :question_id, :_destroy, :_destroy]
     )
   end
 
