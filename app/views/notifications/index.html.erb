@@ -1,0 +1,34 @@
+<div class="content course_detail">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="text-success"> <i class="fa fa-globe"></i>Your's Notifications</h3>
+        <table id="notifications">
+          <thead>
+            <tr><th></th></tr>
+          </thead>
+          <tbody>
+            <% if @notifications.size > 0 %>
+              <% @notifications.each do |noti| %>
+                <tr class="<%= noti.mask_as_read? ? 'read' : 'not_read'%> notification_<%= noti.id %>">
+                  <td class="card" style="padding-left: 20px">
+                    <%= noti.content %>
+                    <br>
+                    <a class="text-success" href="<%= exam_path(noti.target_id) %>">Accept</a>
+                    <% unless noti.mask_as_read? %>
+                      |
+                      <a class="text-primary mask_as_read_button" href="#" data-id="<%= noti.id %>" >mark as read</a>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            <% else %>
+              <tr><td>Havent notifications yet</td></tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= paginate @notifications %>
+      </div>
+    </div>
+  </div>
+</div>

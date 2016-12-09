@@ -20,3 +20,4 @@
 //= require_tree .
 //= require toastr
 //= require sweetalert
+//= require select2

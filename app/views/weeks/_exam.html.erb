@@ -1,0 +1,48 @@
+<tr>
+  <td><%= index + 1 %></td>
+  <td><%= exam.test.week.course.name %></td>
+  <td>
+    <% if exam.status == "finished" %>
+      <label class="label-status text-success">
+    <% elsif exam.status == "start" %>
+      <label class="label-status text-primary">
+    <% else %>
+      <label class="label-status text-warning">
+    <% end %>
+        <%= exam.status %>
+      </label>
+  </td>
+  <td><%= spend_time exam %></td>
+  <td>
+    <% unless exam.score.nil? %>
+      <%= exam.score %>
+    <% else %>
+      ---
+    <% end %>
+  </td>
+  <td>
+    <% if exam.status == 'start' %>
+      <a href="<%= exam_path(exam)%>" class="start_exam">
+        <i class="fa fa-external-link" aria-hidden="true"></i>
+        Start exam
+      </a>
+    <% elsif exam.status == 'finished' %>
+      <a href="<%= exam_path(exam)%>" class="view_result">
+        <i class="fa fa-eye" aria-hidden="true"></i>
+        View Result
+      </a>
+    <% else %>
+      <a href="<%= exam_path(exam)%>" class="continute_exam">
+        <i class="fa fa-level-up" aria-hidden="true"></i>
+        Continute
+      </a>
+    <% end %>
+
+    |
+
+    <a href="#" class="challenge_button" data-toggle="modal" data-target="#invite_challenge" data-id="<%= exam.test.id %>">
+      <i class="fa fa-handshake-o" aria-hidden="true"></i>
+      Challenge Others
+    </a>
+  </td>
+</tr>

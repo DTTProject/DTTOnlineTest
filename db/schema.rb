@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161129023626) do
+ActiveRecord::Schema.define(version: 20161209234314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,18 @@ ActiveRecord::Schema.define(version: 20161129023626) do
     t.datetime "updated_at",       null: false
   end
 
+  create_table "exams", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "test_id"
+    t.integer  "status"
+    t.integer  "start_time"
+    t.integer  "end_time"
+    t.string   "score"
+    t.integer  "test_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "feedbacks", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -68,9 +80,19 @@ ActiveRecord::Schema.define(version: 20161129023626) do
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "test_id"
+    t.integer  "exam_id"
     t.index ["user_id"], name: "index_notes_on_user_id", using: :btree
     t.index ["week_id"], name: "index_notes_on_week_id", using: :btree
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "content"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.boolean  "mask_as_read"
+    t.integer  "target_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id", using: :btree
   end
 
   create_table "questions", force: :cascade do |t|
@@ -89,7 +111,7 @@ ActiveRecord::Schema.define(version: 20161129023626) do
 
   create_table "results", force: :cascade do |t|
     t.integer  "question_id"
-    t.integer  "test_id"
+    t.integer  "exam_id"
     t.integer  "answer_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -143,6 +165,7 @@ ActiveRecord::Schema.define(version: 20161129023626) do
   add_foreign_key "comments", "users"
   add_foreign_key "notes", "users"
   add_foreign_key "notes", "weeks"
+  add_foreign_key "notifications", "users"
   add_foreign_key "questions", "courses"
   add_foreign_key "questions", "users"
   add_foreign_key "weeks", "courses"

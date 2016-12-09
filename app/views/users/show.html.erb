@@ -4,20 +4,73 @@
       <div class="col-md-4 left_side">
         <%= render "user", user: @user %>
       </div>
-      <div class="col-md-7 right_side">
-        <table class="table" id="user_activities">
-          <thead><tr><th></th></tr></thead>
-          <tbody>
-            <% @activities.each do |act| %>
-            <tr class="card">
-              <td>
-                  <%= act.load_user.email %> just create <%= link_to "a test", tests_path, class: "text-primary" %> on <%= link_to act.load_course.name, act.load_course, class: "text-primary" %> course
-              </td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-        <%= paginate @activities %>
+      <div class="col-md-8 right_side">
+        <h4 class="text-center text-warning">
+          <i class="fa fa-spinner" aria-hidden="true"></i>
+          Your's Progress
+        </h4>
+        <p>
+          You learned in <%= pluralize(@courses.count, 'course') %>
+        </p>
+        <hr>
+        <ul class="nav nav-tabs tabs-3 red" role="tablist">
+          <% @courses.each_with_index do |course, index| %>
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#panel_<%= index + 1%>" role="tab">
+                <%= course.name %>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+        <div class="tab-content card">
+          <% @courses.each_with_index do |course, index| %>
+            <div class="tab-pane fade in active" id="panel_<%= index + 1 %>" role="tabpanel">
+              <br>
+              <section id="timeline" class="timeline-outer">
+                <div class="row" id="content">
+                  <div class="col-md-12">
+                    <ul class="timeline">
+                      <% course.weeks.each_with_index do |week, index| %>
+                        <li class="event" data-date="Week <%= index + 1%>">
+                          <h3 style="color: #00bfa5 "><%= week.content %></h3>
+                          <ul class="list_infos_weeks">
+                            <li>
+                              <a href="<%=  exams_week_path(week.id) %>" style="color: #4caf50 ">
+                                <i class="fa fa-expand" aria-hidden="true"></i>
+                                <%= pluralize(Exam.in_week_normal(week.id, current_user).count, "exam" ) %>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="<%= challenges_week_path(week.id) %>" style="color: #8bc34a">
+                                <i class="fa fa-handshake-o" aria-hidden="true"></i>
+                                <%
+                                  @tests =  current_user.tests.where(week_id: week.id)
+                                  @challenges = [[]]
+                                  @tests.each do |test|
+                                    if test.exams.size > 1
+                                      @challenges << test.exams
+                                    end
+                                  end
+                                %>
+                                <%= pluralize(@challenges.select{|chal| chal.size > 0}.count, "challenge" ) %>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="<%= exams_week_path(week.id) %>" style="color: #cddc39">
+                                <i class="fa fa-sticky-note-o" aria-hidden="true"></i>
+                                <%= pluralize(week.notes.where(notes: {user_id: current_user.id}).count, "note" ) %>
+                              </a>
+                            </li>
+                          </ul>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

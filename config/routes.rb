@@ -29,6 +29,12 @@ Rails.application.routes.draw do
   resources :comments, only: :create
   resources :weeks do
     resources :tests
+    member do
+      get 'exams'
+      get 'challenges'
+    end
   end
   resources :notes
+  resources :exams
+  resources :notifications
 end

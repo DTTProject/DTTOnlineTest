@@ -1,0 +1,38 @@
+<div class="modal fade" id="invite_challenge" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <%= form_for Exam.new do |f| %>
+      <!--Content-->
+      <div class="modal-content">
+        <!--Header-->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">Challenge Others</h4>
+        </div>
+        <!--Body-->
+        <div class="modal-body">
+          <div class="form-group test_id"><input type="hidden" name="exam[test_id]" value=""></div>
+          <div class="form-group">
+            <label>Choose Others whom you want invite to the challenge.</label><br/>
+            <select name="exam[user_ids][]" id="user_ids" class="form-control" multiple>
+              <% others.each do |other| %>
+                <option value='<%= other.id %>'><%= other.email.split('@')[0] %></option>
+              <% end %>
+            </select>
+          </div>
+          <script>
+            // $('.mdb-select').material_select();
+            $('#user_ids').select2({tags: true})
+          </script>
+        </div>
+        <!--Footer-->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Invite</button>
+        </div>
+      </div>
+    <% end %>
+    <!--/.Content-->
+  </div>
+</div>

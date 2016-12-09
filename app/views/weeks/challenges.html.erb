@@ -1,0 +1,37 @@
+<div class="content course_detail">
+  <div class="container">
+    <div class="row">
+      <h4 class="text-warning text-center">
+        <i class="fa fa-handshake-o" aria-hidden="true"></i>
+        All your's challenges
+      </h4>
+      <% @challenges.each_with_index do |challenge, index| %>
+        <% if challenge.size > 0 %>
+          <div class="card">
+            <div class="card-block">
+                <h4 class="card-title">Challenge <%= index %></h4>
+                <div class="row">
+                  <% challenge.each_with_index do |chal, index1| %>
+                    <div class="col-md-4">
+                      <h6 class="text-muted"><%= chal.test_type == 'normal' ? 'Challenger ' : 'Recipient challenged'%>
+                      </h6>
+                      <hr>
+                      <div class="more_infos">
+                        <p>
+                          <div class="chip">
+                              <%= image_tag chal.user.avatar.nil? ? 'default_user.png' : chal.user.avatar %>
+                            <%= chal.user.email.split('@')[0] %>
+                        </div>
+                        </p>
+                        <p>Score: <%= chal.score.nil? ? '---' : chal.score %></p>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+            </div>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
