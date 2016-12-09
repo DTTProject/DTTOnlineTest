@@ -22,37 +22,41 @@
         <li class="nav-item">
           <a class="nav-link <%= current_page?(root_url) ? 'home_page_link' : '' %>" id="contact" href="<%= current_page?(root_url) ? '#contactSection' : '/#contactSection' %>"><%= t "layout.navbar.feedback" %></a>
         </li>
+        <% if user_signed_in? %>
+          <li class="nav-item user_email <%= current_page?(root_url) ? '' : 'dropdown_not_home_page' %>">
+            <a class="nav-link <%= current_page?(root_url) ? 'home_page_link' : '' %>" id="contact" href="#contactSection">
+              <%= user_signed_in? ? current_user.email : " "  %>
+            </a>
+            <ul class="drop-menu menu-1">
+              <li>
+                <a href="<%= notifications_path %>">
+                  <!-- <i class="fa fa-globe" aria-hidden="true"></i> -->
+                  Notification
+                  <sup>
+                    <%= Notification.where(user_id: current_user.id).where(mask_as_read: false).count %>
+                  </sup>
+                </a>
+              </li>
+              <li>
+                <%= link_to questions_path do %>
+                  <%= t "page.home.nav.users.questions_contributed" %>
+                <% end %>
+              </li>
 
-        <li class="nav-item user_email <%= current_page?(root_url) ? '' : 'dropdown_not_home_page' %>">
-          <a class="nav-link <%= current_page?(root_url) ? 'home_page_link' : '' %>" id="contact" href="#contactSection">
-            <%= user_signed_in? ? current_user.email : " "  %>
-          </a>
-          <ul class="drop-menu menu-1">
-            <li>
-              <%= link_to questions_path do %>
-                <%= t "page.home.nav.users.questions_contributed" %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to tests_path do %>
-                Your's Tests
-              <% end %>
-            </li>
-            <% if user_signed_in? %>
               <li>
                 <%= link_to user_path(current_user) do %>
                   <%= t "page.home.nav.users.user_profile" %>
                 <% end %>
               </li>
-            <% end %>
-            <li>
-               <%= link_to t("devise.logout"),
-          destroy_user_session_path, method: :delete %>
-            </li>
-          </ul>
-        </li>
+
+              <li>
+                <%= link_to t("devise.logout"),
+                  destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
+          </li>
+        <% end %>
       </ul>
     </div>
-    <!--/.Collapse content-->
   </div>
 </nav>

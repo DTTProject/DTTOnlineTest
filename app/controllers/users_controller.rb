@@ -10,7 +10,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @activities = Activity.order_desc.page(params[:page]).per Settings.per_page
+    # @activities = Activity.order_desc.page(params[:page]).per Settings.per_page
+    @exams = Exam.where(user_id: current_user.id)
+    @weeks_id =  current_user.tests.map(&:week_id).uniq
+    @courses =  Course.get_courses @weeks_id
   end
 
   private

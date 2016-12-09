@@ -1,6 +1,6 @@
 <%= form_for Note.new do |f| %>
-  <%= f.hidden_field :test_id, value: test.id %>
-  <%= f.hidden_field :week_id, value: test.week.id %>
+  <%= f.hidden_field :exam_id, value: exam.id %>
+  <%= f.hidden_field :week_id, value: exam.test.week.id %>
   <div class="md-form">
     <%= f.text_area :content, class: "md-textarea" %>
   </div>

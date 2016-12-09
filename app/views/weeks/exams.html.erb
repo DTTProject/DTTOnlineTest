@@ -1,0 +1,57 @@
+<div class="content course_detail">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 ">
+        <div class="row">
+          <div class="col-md-3">
+            <h5 class="text-primary"><i class="fa fa-sticky-note-o" aria-hidden="true"></i> Notes</h5>
+            <hr>
+            <ul class="list_notes">
+              <% @week.user_notes(current_user.id).each do |note| %>
+                <li><%= note.content %></li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="col-md-9">
+            <h5 class="text-success">
+              <i class="fa fa-info" aria-hidden="true"></i>
+              <%= t "page.tests.index.title" %>
+              in week: <%= @week.content %>
+            </h5>
+            <table class="table" id="user_tests">
+              <thead>
+                <tr>
+                  <th data-field="stt">
+                    <%= t "page.tests.index.tables.stt" %>
+                  </th>
+                  <th data-field="course">
+                    <%= t "page.tests.index.tables.course" %>
+                  </th>
+                  <th data-field="status">
+                    <%= t "page.tests.index.tables.status" %>
+                  </th>
+                  <th data-field="spent_time">
+                    <%= t "page.tests.index.tables.spend_time" %>
+                  </th>
+                  <th data-field="score">
+                    <%= t "page.tests.index.tables.score" %>
+                  </th>
+                  <th data-field="action" class="center-align">
+                    <%= t "page.tests.index.tables.action" %>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @exams.each_with_index do |exam, index| %>
+                  <%= render "exam", exam: exam, index: index %>
+                <% end %>
+              </tbody>
+            </table>
+            <%= paginate @exams %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render "modal_invite", others: @others %>

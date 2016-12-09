@@ -55,11 +55,12 @@ module ApplicationHelper
   end
 
   def spend_time exam
-    time = exam.week.course.duration * Settings.MINUTE
-    if exam.end_time - exam.start_time <= exam.week.course.duration * Settings.MINUTE
+    time = exam.test.week.course.duration * Settings.MINUTE
+    if exam.end_time - exam.start_time <= exam.test.week.course.duration * Settings.MINUTE
       time = exam.end_time.to_i - exam.start_time.to_i
     end
     Time.at(time).utc.strftime Settings.TIME_FORMAT
   end
+
 end
 

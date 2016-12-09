@@ -1,0 +1,79 @@
+<div class="card col-md-12 questions_answers" style="padding-top: 2rem">
+  <div class="card-title">
+    <label class="label-status label-default" style="display:block; font-size: 1.1em">
+      <%= t "page.tests.do.question_num"%>
+      <%= f.index + 1 %>
+    </label>
+    <div class="question" id="question_<%= f.index %>">
+      <%= f.object.question.content.try(:html_safe) %>
+    </div>
+    <script>
+      quill[<%= f.index %>]  =  new Quill("#question_<%= f.index %>",{
+        modules: {
+          toolbar: [
+            ['bold', 'italic'],
+            ['link', 'blockquote', 'code-block', 'image'],
+            [{ list: 'ordered' }, { list: 'bullet' }]
+          ]
+        },
+        placeholder: 'Write content here...',
+        theme: 'snow'
+      });
+      quill[<%= f.index %>].setContents(<%= raw(f.object.question.content.try(:html_safe)) %>);
+      quill[<%= f.index %>].enable(false);
+      $('.ql-toolbar').hide();
+    </script>
+  </div>
+  <div class="card-body">
+    <div class="answers">
+      <% f.object.question.answers.each do |answer| %>
+        <%= f.hidden_field :question_id  %>
+        <% if f.object.exam.finished? %>
+          <% if answer.correct? %>
+            <p class="green-text">
+          <% else %>
+            <p class="red-text">
+          <% end %>
+        <% else %>
+            <p>
+        <% end %>
+          <%= f.radio_button :answer_id, answer.id,
+            checked: answer.id == f.object.answer_id, disabled: (f.object.exam.finished? ? true : false) %>
+          <%= f.label :answer_id, value: answer.id  %>
+          <span class="answer_content">
+            <%= answer.content %>
+          </span>
+        </p>
+      <% end %>
+    </div>
+    <% if f.object.exam.finished? %>
+      <hr>
+      <div class="suggestion" style="color: #aa66cc">
+        <h6>Suggestion: </h6>
+        <div class="suggestion_question" id="suggestion_question_<%= f.index %>"></div>
+         <script>
+            quill1[<%= f.index %>]  =  new Quill("#suggestion_question_<%= f.index %>",{
+              modules: {
+                toolbar: [
+                  ['bold', 'italic'],
+                  ['link', 'blockquote', 'code-block', 'image'],
+                  [{ list: 'ordered' }, { list: 'bullet' }]
+                ]
+              },
+              placeholder: '',
+              theme: 'snow'
+            });
+            quill1[<%= f.index %>].setContents(<%= raw(f.object.question.suggestion) %>);
+            quill1[<%= f.index %>].enable(false);
+            $('.ql-toolbar').hide();
+            $('.suggestion_question').css('border', 'none');
+          </script>
+
+      </div>
+      <a class="pull-right pop_new_note" data-toggle="popover" title="Add Note" data-placement="top" data-content="#"  data-remote="true" href="<%= new_note_path(exam_id: f.object.exam.id) %>">
+      <i class="fa fa-sticky-note-o" aria-hidden="true"></i>
+      Add Note </a>
+    <% end %>
+  </div>
+</div>
+

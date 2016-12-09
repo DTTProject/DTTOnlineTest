@@ -5,21 +5,21 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :activities, dependent: :destroy
   has_many :questions, dependent: :destroy
-  has_many :tests, dependent: :destroy
+  has_many :exams, dependent: :destroy
+  has_many :tests, through: :exams
   has_many :comments, dependent: :destroy
   has_many :notes, dependent: :destroy
-
   enum role: [:user, :admin]
 
   scope :best_user_hash, ->(){joins(:questions).where(users: {role: 0})
     .where.not(questions: {user_id: nil}).group('users.id')
     .order('COUNT(*) DESC').limit(5)}
 
-  scope :best_user_test, ->(week_id){joins(:tests)
-    .select("users.*, tests.score as score")
+  scope :best_user_test, ->(week_id){joins(:exams).joins(:tests)
+    .select("users.*, exams.score as score")
     .where(users: {role: 0})
     .where("tests.week_id = ?", week_id)
-    .where('tests.score =  (select MAX(score) from tests)')
+    .where('exams.score =  (select MAX(score) from exams)')
     .distinct
   }
 

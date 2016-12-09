@@ -2,7 +2,7 @@ class NotesController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @test =  Test.find_by id: params[:test_id]
+    @exam =  Exam.find_by id: params[:exam_id]
   end
 
   def create
@@ -22,6 +22,6 @@ class NotesController < ApplicationController
 
   private
   def note_params
-    params.require(:note).permit :test_id, :user_id, :week_id, :content
+    params.require(:note).permit :exam_id, :user_id, :week_id, :content
   end
 end

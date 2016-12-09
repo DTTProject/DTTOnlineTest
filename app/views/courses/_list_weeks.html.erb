@@ -2,12 +2,29 @@
   <div class="card">
     <!--Card content-->
     <div class="card-block">
-      <!--Title-->
-      <h4 class="card-title text-underline"><%= week.content %></h4>
-      <!--Text-->
-      <p class="card-text"><%= week.description %></p>
-      <%= render "create_test", _week: week  %>
-    </div>
-    <!--/.Card content-->
+      <div class="row">
+        <div class="col-md-9">
+          <h4 class="card-title text-underline"><%= week.content %></h4>
+          <p class="card-text"><%= week.description %></p>
+          <%= render "create_test", _week: week  %>
+        </div>
+        <div class="col-md-3 test_challenge_buttons">
+          <ul>
+            <li>
+              <a href="<%= exams_week_path(week) %>">
+                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                Tests Created
+              </a>
+            </li>
+            <li>
+              <a href="<%= challenges_week_path(week) %>">
+                <i class="fa fa-handshake-o" aria-hidden="true"></i>
+                All Challenged
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      </div>
   </div>
 <% end %>

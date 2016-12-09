@@ -1,0 +1,71 @@
+<div class="content do_test">
+  <div class="container-fluid test_container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="text-center text-strong">
+          <% if @exam.start? || @exam.examing? %>
+            Doing Test
+          <% else %>
+            Result
+          <% end %>
+        </h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <% if @exam.start? || @exam.examing? %>
+          <%= render "clock_count_down", hour: @hour, minute: @minute, second: @second %>
+        <% else %>
+          <%= render "left_bar_result", exam: @exam %>
+        <% end %>
+      </div>
+      <div class="col-md-6 center_area_test">
+          <script>
+            var quill = []
+            var quill1 = []
+          </script>
+          <%= form_for @exam do |f| %>
+            <%= f.fields_for :results do |result| %>
+              <%= render "question", f: result %>
+            <% end %>
+            <% unless @exam.finished? %>
+              <div class="examination_buttons">
+                <button type="submit" name="exam[status]"
+                  class="btn waves-effect waves-light green" value="examing">
+                  <%= t "page.front-end.examination.do.save" %>
+                </button>
+                <button type="submit" name="exam[status]"
+                  class="btn waves-effect waves-light blue right finish_exam" value="finished">
+                  <%= t "page.front-end.examination.do.finish" %>
+                </button>
+              </div>
+            <% else %>
+              <a href="<%= course_path(@exam.test.week.course.id) %>" class="btn btn-primary">
+                <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+                Back
+              </a>
+            <% end %>
+          <% end %>
+
+      </div>
+      <div class="col-md-3">
+        <h6 class="text-warning">
+          <i class="fa fa-trophy" aria-hidden="true"></i>
+          <%= t "page.courses.detail.best_score"  %>
+        </h6>
+        <div class="row">
+          <%= render "best_score" %>
+        </div>
+        <div class="row notes">
+          <h6 class="text-primary"><i class="fa fa-sticky-note-o" aria-hidden="true"></i> Notes</h6>
+          <hr>
+          <ul class="list_notes">
+            <% @exam.notes.each do |note| %>
+              <li><%= note.content %></li>
+            <% end %>
+          </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render "notes/form", exam: @exam %>
