@@ -69,3 +69,4 @@ gem "paranoia", "~> 2.2"
 gem 'sweetalert-rails'
 gem 'ratyrate'
 gem "select2-rails"
+gem 'rails_12factor', group: :production

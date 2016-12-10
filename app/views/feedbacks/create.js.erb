@@ -1,3 +1,4 @@
+$(document).on('turbolinks:load', function(){
 <% if @feedback.errors.size <= 0 %>
   swal("Thankyou!", "Your's feedback was recorded! Thanks for your opinion...", "success");
   $("#new_feedback")[0].reset();
@@ -6,3 +7,4 @@
   var error_message = "<%= @feedback.errors.full_messages.to_sentence %>"
   toastr["error"](error_message)
 <% end %>
+})
