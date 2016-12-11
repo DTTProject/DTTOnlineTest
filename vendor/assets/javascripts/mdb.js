@@ -5156,10 +5156,10 @@ Waves.attach('.navbar-nav a, .nav-icons li a, .navbar form, .nav-tabs .nav-item'
 Waves.attach('.navbar-brand', ['waves-light']);
 Waves.attach('.pager li a', ['waves-light']);
 Waves.attach('.pagination .page-item .page-link', ['waves-effect']);
-Waves.init();/* FORMS */
 
 (function ($) {
-    $(document).ready(function () {
+    $(document).on("turbolinks:load", function () {
+      Waves.init();/* FORMS */
 
         // Function to update labels of text fields
         Materialize.updateTextFields = function () {
@@ -5188,7 +5188,7 @@ Waves.init();/* FORMS */
         });
 
         // Add active if input element has been pre-populated on document ready
-        $(document).ready(function () {
+        $(document).on("turbolinks:load", function () {
             Materialize.updateTextFields();
         });
 

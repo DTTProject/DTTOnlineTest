@@ -55,8 +55,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
 
-gem 'materialize-sass'
-gem 'config'
+gem 'materialize-sass' # only use for js plugins because mdb.js does not have them
 gem 'faker'
 gem 'config'
 # Toast messages
