@@ -13,14 +13,14 @@ class Test < ApplicationRecord
     # and 20% difficult questions
     # Step 1: Get random question
     questions = self.week.questions.where("questions.status =  ?", 0)
-      .where("questions.complexity = ?", 0).shuffle
+      .where("questions.complexity = ?", 0).shuffle.uniq
       .take (week.course.question_numbers * 0.2).floor
     questions += self.week.course.questions.where("questions.status =  ?", 0)
-      .where("questions.complexity = ?", 2).shuffle
+      .where("questions.complexity = ?", 2).shuffle.uniq
       .take (week.course.question_numbers * 0.3).floor
     number_difficults = self.week.course.question_numbers -  questions.size
     questions += self.week.questions.where("questions.status =  ?", 0)
-      .where("questions.complexity = ?", 2).shuffle
+      .where("questions.complexity = ?", 2).shuffle.uniq
       .take number_difficults
     # Create result for each question
     create_results questions, exam
