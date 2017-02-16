@@ -104,7 +104,7 @@ en:
           description: "Please choose complexity for your test. If not, we will
                         random base 20% difficult, 30% easy, and 50% normal questions"
           real_test: "Lecture"
-          practice: "Create Practice Test"
+          practice: "Practicing"
         best_score: "Best Score"
         process: "Process Timeline"
         title: "Course Information"

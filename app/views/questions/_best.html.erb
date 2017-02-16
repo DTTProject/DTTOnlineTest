@@ -8,7 +8,7 @@
       </a>
       <div class="media-body">
         <h4 class="media-heading">
-          <a href="#"><%= user.email%></a>
+          <a href="#"><%= user.name %></a>
         </h4>
         <p>
           <a href="<%= (user.id == current_user.id) ? questions_path : contributions_user_path(id: user.id) %>"><%= @contributes[key] %> contrubitions</a>
